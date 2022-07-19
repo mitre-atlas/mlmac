@@ -1,5 +1,11 @@
 <template>
-  <v-data-table :headers="headers" :items="items" show-expand item-key="name">
+  <v-data-table
+    dark
+    :headers="headers"
+    :items="items"
+    show-expand
+    item-key="name"
+  >
     <template #item.rank="{ item }">
       {{ item.rank }}
       <span v-if="item.rank === 1">

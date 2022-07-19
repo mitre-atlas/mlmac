@@ -1,7 +1,8 @@
 <template>
   <div>
     {{ data }}
-    <Leaderboard></Leaderboard>
+    <RulesSection></RulesSection>
+    <LeaderboardSection></LeaderboardSection>
   </div>
 </template>
 
