@@ -1,5 +1,5 @@
 <template>
-  <v-data-table :headers="headers" :items="items">
+  <v-data-table :headers="headers" :items="items" show-expand item-key="name">
     <template #item.rank="{ item }">
       {{ item.rank }}
       <span v-if="item.rank === 1">
@@ -7,6 +7,17 @@
       </span>
     </template>
     <template #item.score="{ item }"> {{ item.score }}% </template>
+    <template #expanded-item="{ headers, item }">
+      <td :colspan="headers.length">
+        <v-sparkline
+          auto-draw
+          smooth
+          :value="item.sparklineValues"
+          width="500"
+          :color="item.color"
+        ></v-sparkline>
+      </td>
+    </template>
   </v-data-table>
 </template>
 
@@ -36,6 +47,10 @@ export default Vue.extend({
         {
           text: 'Score',
           value: 'score'
+        },
+        {
+          text: 'Historical Accuracy',
+          value: 'data-table-expand'
         }
       ]
     }
@@ -54,7 +69,11 @@ export default Vue.extend({
       const teams = this.names.map((name) => ({
         name,
         score: Math.floor(Math.random() * 100),
-        rank: 0
+        rank: 0,
+        sparklineValues: Array.from({ length: 10 }, () =>
+          Math.floor(Math.random() * 100)
+        ),
+        color: name.split(' ')[0].toLowerCase()
       }))
 
       // Reverse score order
