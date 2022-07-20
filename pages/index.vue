@@ -1,8 +1,13 @@
 <template>
   <div>
+    <!-- <Hero></Hero> -->
+    <TitleHero></TitleHero>
+    <Features></Features>
     {{ data }}
     <RulesSection></RulesSection>
+    <SubmissionForm></SubmissionForm>
     <LeaderboardSection></LeaderboardSection>
+    <Credits />
   </div>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
-  <v-container style="height: 50vh">
-    <div class="text-h2">{{ title }}</div>
-
-    <div class="text-caption">{{ lastUpdated }}</div>
+  <v-container>
+    <SectionHeader>{{ title }}</SectionHeader>
 
     <LeaderboardTable></LeaderboardTable>
+
+    <div class="text-caption">{{ lastUpdated }}</div>
   </v-container>
 </template>
 

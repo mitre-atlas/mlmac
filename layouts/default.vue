@@ -2,7 +2,7 @@
   <v-app dark>
     <app-bar />
     <v-main>
-      <v-container>
+      <v-container fluid class="pa-0">
         <Nuxt />
       </v-container>
     </v-main>

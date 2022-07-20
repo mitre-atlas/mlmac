@@ -55,7 +55,7 @@ export default Vue.extend({
           value: 'score'
         },
         {
-          text: 'Historical Accuracy',
+          text: 'Show queries',
           value: 'data-table-expand'
         }
       ]
