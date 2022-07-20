@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <SectionHeader>{{ title }}</SectionHeader>
+    <SectionHeader id="leaderboard">{{ title }}</SectionHeader>
 
     <LeaderboardTable></LeaderboardTable>
 

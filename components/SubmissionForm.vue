@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <SectionHeader>Submission Form</SectionHeader>
+    <SectionHeader id="form">Submission Form</SectionHeader>
     <p>
       Competition details available at
       <a href="https://mlmac.io">https://mlmac.io</a>
@@ -99,10 +99,10 @@ export default Vue.extend({
     }
   },
   computed: {
-    modelNumberChoices() {
+    modelNumberChoices(): number[] {
       return Array.from(Array(this.numChoices)).map((e, i) => i + 1)
     },
-    headers() {
+    headers(): object[] {
       const headerItems = [
         {
           text: 'Model Name',
@@ -111,16 +111,16 @@ export default Vue.extend({
       ]
       for (let i = 1; i <= this.numChoices; i++) {
         const headerItem = {
-          text: i,
-          value: i
+          text: `${i}`,
+          value: `${i}`
         }
         headerItems.push(headerItem)
       }
       return headerItems
     },
-    items() {
-      return this.modelNames.map((m) => {
-        const item = {
+    items(): object[] {
+      return this.modelNames.map((m: string) => {
+        const item: any = {
           name: m
         }
 
@@ -133,10 +133,14 @@ export default Vue.extend({
   },
   methods: {
     validate() {
-      this.$refs.form.validate()
+      // Disable type check
+      const form: any = this.$refs.form
+      form.validate()
     },
     reset() {
-      this.$refs.form.reset()
+      // Disable type check
+      const form: any = this.$refs.form
+      form.reset()
     }
   }
 })

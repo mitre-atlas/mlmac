@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <Hero></Hero> -->
     <TitleHero></TitleHero>
+    <Overview></Overview>
     <Features></Features>
-    {{ data }}
+
     <RulesSection></RulesSection>
     <SubmissionForm></SubmissionForm>
     <LeaderboardSection></LeaderboardSection>

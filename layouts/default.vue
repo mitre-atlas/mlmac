@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <app-bar />
     <v-main>
       <v-container fluid class="pa-0">

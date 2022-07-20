@@ -1,5 +1,5 @@
 <template>
-  <v-card flat>
+  <v-card flat color="transparent">
     <div class="d-flex flex-no-wrap">
       <div class="d-flex align-center ma-3">
         <v-avatar :color="color" class="darken-2" style="opacity: 0.6">

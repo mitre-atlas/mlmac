@@ -7,14 +7,14 @@
   >
     <v-row align="center" justify="center">
       <v-col class="text-center" cols="12">
-        <div class="text-h1 font-weight-medium">{{ title }}</div>
+        <div class="text-h1 font-weight-medium mx-10">{{ title }}</div>
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
       <CountdownTimer></CountdownTimer>
     </v-row>
     <v-row align="center" justify="center">
-      <v-btn rounded large color="primary">Register</v-btn>
+      <v-btn rounded x-large color="primary">Register</v-btn>
     </v-row>
   </v-container>
 </template>

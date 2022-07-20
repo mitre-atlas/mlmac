@@ -1,13 +1,13 @@
 <template>
-  <v-container style="height: 50vh">
-    <div class="text-h2">Rules</div>
+  <v-container style="height: 30vh">
+    <SectionHeader id="rules">Rules</SectionHeader>
 
     <v-tabs centered :color="tabColor" @change="handleTabChange($event)">
       <v-tab v-for="rule in rules" :key="rule.name">
         {{ rule.name }} Team
       </v-tab>
       <v-tab-item v-for="rule in rules" :key="rule.name">
-        <v-card>
+        <v-card color="transparent">
           <v-card-text>
             {{ rule.text }}
           </v-card-text>

@@ -1,6 +1,6 @@
 <template>
   <v-container style="height: 50vh">
-    <SectionHeader>{{ title }}</SectionHeader>
+    <SectionHeader id="organizers">{{ title }}</SectionHeader>
 
     <v-row>
       <v-col
