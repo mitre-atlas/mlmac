@@ -31,16 +31,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-data-table
-          :headers="headers"
-          :items="items"
-          hide-default-footer
-          caption="What is the correct model pairing?"
-        >
-          <template v-for="i in modelNumberChoices" #[`item.${i}`]="{ item }">
-            <v-simple-checkbox v-model="item[i]"></v-simple-checkbox>
-          </template>
-        </v-data-table>
+        <ModelSelectionTable></ModelSelectionTable>
       </v-row>
       <v-row>
         <v-checkbox
@@ -82,53 +73,7 @@ export default Vue.extend({
       nameRules: [
         // (v) => !!v || 'Token is required',
         // (v) => v.length != 10 || 'Your token should be 10 numbers'
-      ],
-      modelNames: [
-        'GPT-2',
-        'DistilGPT-2',
-        'MiniLM',
-        'XLNet',
-        'GPT-J',
-        'GPT Neo',
-        'Bloom 350m',
-        'Bloom 2b5',
-        'GPT-2 XL',
-        'None'
-      ],
-      numChoices: 12
-    }
-  },
-  computed: {
-    modelNumberChoices(): number[] {
-      return Array.from(Array(this.numChoices)).map((e, i) => i + 1)
-    },
-    headers(): object[] {
-      const headerItems = [
-        {
-          text: 'Model Name',
-          value: 'name'
-        }
       ]
-      for (let i = 1; i <= this.numChoices; i++) {
-        const headerItem = {
-          text: `${i}`,
-          value: `${i}`
-        }
-        headerItems.push(headerItem)
-      }
-      return headerItems
-    },
-    items(): object[] {
-      return this.modelNames.map((m: string) => {
-        const item: any = {
-          name: m
-        }
-
-        for (let i = 1; i <= this.numChoices; i++) {
-          item[`${i}`] = false
-        }
-        return item
-      })
     }
   },
   methods: {

@@ -17,5 +17,8 @@
     },
     "types": ["@nuxt/types", "@types/node", "@nuxt/content", "vuetify"]
   },
+  "vueCompilerOptions": {
+    "experimentalDisableTemplateSupport": true
+  },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
