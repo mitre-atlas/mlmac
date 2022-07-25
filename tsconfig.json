@@ -15,7 +15,7 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@types/node", "@nuxt/content", "vuetify"]
+    "types": ["@nuxt/types", "@types/node", "@nuxt/content", "vuetify", "@nuxt/http"]
   },
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true

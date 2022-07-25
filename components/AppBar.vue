@@ -6,7 +6,9 @@
       v-for="link in links"
       :key="link.name"
       text
-      @click="$vuetify.goTo(`#${link.id}`)"
+      :nuxt="'route' in link"
+      :to="'route' in link && link.route"
+      @click="'id' in link && $vuetify.goTo(`#${link.id}`)"
       >{{ link.name }}</v-btn
     >
   </v-app-bar>
@@ -29,11 +31,11 @@ export default Vue.extend({
         },
         {
           name: 'Submission',
-          id: 'form'
+          route: 'submit'
         },
         {
-          name: 'Leaderboard',
-          id: 'leaderboard'
+          name: 'Results',
+          route: 'results'
         },
         {
           name: 'Organizers',

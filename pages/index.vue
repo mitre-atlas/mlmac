@@ -4,8 +4,7 @@
     <Overview></Overview>
     <Features></Features>
     <RulesSection></RulesSection>
-    <SubmissionForm></SubmissionForm>
-    <LeaderboardSection></LeaderboardSection>
+
     <Credits />
   </div>
 </template>
