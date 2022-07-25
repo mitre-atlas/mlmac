@@ -3,7 +3,6 @@
     <TitleHero></TitleHero>
     <Overview></Overview>
     <Features></Features>
-
     <RulesSection></RulesSection>
     <SubmissionForm></SubmissionForm>
     <LeaderboardSection></LeaderboardSection>

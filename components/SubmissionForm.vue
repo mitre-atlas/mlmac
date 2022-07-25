@@ -31,7 +31,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <ModelSelectionTable></ModelSelectionTable>
+        <ModelSelectionOptions></ModelSelectionOptions>
       </v-row>
       <v-row>
         <v-checkbox
