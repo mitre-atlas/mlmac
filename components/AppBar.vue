@@ -7,7 +7,7 @@
       :key="link.name"
       text
       :nuxt="'route' in link"
-      :to="'route' in link && link.route"
+      :to="'route' in link ? link.route : ''"
       @click="'id' in link && $vuetify.goTo(`#${link.id}`)"
       >{{ link.name }}</v-btn
     >

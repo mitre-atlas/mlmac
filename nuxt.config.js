@@ -38,10 +38,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxt/content',
-    '@nuxt/http'
-  ],
+  modules: ['@nuxt/content', '@nuxt/http'],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -56,7 +53,7 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
         },
       },
     },
@@ -66,14 +63,14 @@ export default {
   build: {},
 
   http: {
-    proxy: true // Can be also an object with default options
+    proxy: true, // Can be also an object with default options
   },
 
   proxy: {
     '/api/': {
       target: 'https://api.mlmac.io:8080',
-      pathRewrite: { '^/api/': '' }
-    }
-  }
-  
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true,
+    },
+  },
 }
