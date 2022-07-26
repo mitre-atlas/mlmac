@@ -64,4 +64,16 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  http: {
+    proxy: true // Can be also an object with default options
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'https://api.mlmac.io:8080',
+      pathRewrite: { '^/api/': '' }
+    }
+  }
+  
 }
