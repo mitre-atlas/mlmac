@@ -1,15 +1,11 @@
 <template>
-    <div v-html="rawHtml"></div>
+  <div>Login</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  layout: 'bare',
-  props: {
-    rawHtml: String
-  },
   data() {
     return {
       title: 'Login',

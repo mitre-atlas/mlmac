@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  name: 'ResultsPage',
-  middleware: 'auth'
+  name: 'ResultsPage'
 }
 </script>
