@@ -1,6 +1,8 @@
 <template>
   <v-app-bar app>
-    <v-app-bar-title> MLMAC </v-app-bar-title>
+    <v-app-bar-title style="cursor: pointer" @click="$router.push('/')">
+      MLMAC
+    </v-app-bar-title>
     <v-spacer></v-spacer>
     <v-btn
       v-for="link in links"
