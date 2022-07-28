@@ -2,8 +2,9 @@
   <div>
     <TitleHero></TitleHero>
     <Overview></Overview>
-    <Features></Features>
-    <RulesSection></RulesSection>
+    <CompetitionDetails></CompetitionDetails>
+    <!-- <Features></Features>
+    <RulesSection></RulesSection> -->
 
     <Credits />
   </div>

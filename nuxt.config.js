@@ -38,7 +38,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxt/content', '@nuxt/http'],
+  modules: ['@nuxt/content', '@nuxt/http', '@nuxtjs/tailwindcss'],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -71,6 +71,25 @@ export default {
       target: 'https://api.mlmac.io:8080',
       pathRewrite: { '^/api/': '' },
       changeOrigin: true,
+    },
+  },
+  router: {
+    // https://v3.router.vuejs.org/guide/advanced/scroll-behavior
+    scrollBehavior: (to, from, savedPosition) => {
+      let position = { x: 0, y: 0 }
+
+      // savedPosition is only available for popstate navigations (back button)
+      if (savedPosition) {
+        position = savedPosition
+      } else if (to.hash) {
+        position = {
+          selector: to.hash,
+          offset: { x: 0, y: 70 }, // Accommodate app bar height of 64
+          behavior: 'smooth',
+        }
+      }
+
+      return position
     },
   },
 }

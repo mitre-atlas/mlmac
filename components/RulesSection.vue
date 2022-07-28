@@ -2,7 +2,11 @@
   <v-container style="height: 30vh">
     <SectionHeader id="rules">Rules</SectionHeader>
 
-    <v-tabs centered :color="tabColor" @change="handleTabChange($event)">
+    <v-tabs
+      centered
+      background-color="transparent"
+      :color="tabColor"
+      @change="handleTabChange($event)">
       <v-tab v-for="rule in rules" :key="rule.name">
         {{ rule.name }} Team
       </v-tab>

@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <SectionHeader id="overview">Overview</SectionHeader>
+    <SectionHeader id="details">Competition Details</SectionHeader>
     <nuxt-content
       class="mx-auto prose dark:prose-invert"
-      :document="overview"></nuxt-content>
+      :document="details"></nuxt-content>
   </v-container>
 </template>
 
@@ -13,11 +13,11 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      overview: {}
+      details: {}
     }
   },
   async fetch() {
-    this.overview = await this.$content('overview').fetch()
+    this.details = await this.$content('competition-details').fetch()
   }
 })
 </script>
