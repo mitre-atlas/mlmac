@@ -36,7 +36,7 @@
 
       <v-divider></v-divider>
 
-      <v-list dense nav>
+      <v-list nav>
         <div v-for="link in links" :key="link.route">
           <v-list-group
             v-if="'items' in link && link.items.length > 0"
@@ -45,14 +45,16 @@
               <v-list-item-title>{{ link.name }}</v-list-item-title>
             </template>
 
-            <v-list dense nav>
+            <v-list nav>
               <v-list-item
                 v-for="(toc, i) in link.items"
                 :key="i"
                 nuxt
                 :to="`/#${toc.id}`">
                 <v-list-item-content>
-                  <v-list-item-title>{{ toc.text }}</v-list-item-title>
+                  <v-list-item-title class="ml-5">{{
+                    toc.text
+                  }}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -65,6 +67,18 @@
           </v-list-item>
         </div>
       </v-list>
+
+      <template #append>
+        <v-divider></v-divider>
+        <v-list nav>
+          <v-list-item nuxt to="/#organizers">
+            <v-list-item-title>Organizers</v-list-item-title>
+          </v-list-item>
+          <v-list-item nuxt to="/terms">
+            <v-list-item-title>Terms of Service</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </template>
     </v-navigation-drawer>
   </div>
 </template>
@@ -85,7 +99,7 @@ export default Vue.extend({
           name: 'Competition Details',
           route: '/#details',
           items: []
-        },
+        }
         // {
         //   name: 'Submission',
         //   route: '/submit',
@@ -96,11 +110,11 @@ export default Vue.extend({
         //   route: '/results',
         //   items: []
         // },
-        {
-          name: 'Organizers',
-          route: '/#organizers',
-          items: []
-        }
+        // {
+        //   name: 'Organizers',
+        //   route: '/#organizers',
+        //   items: []
+        // }
       ],
       drawer: false,
       details: {}
