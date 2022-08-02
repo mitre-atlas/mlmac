@@ -6,8 +6,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - mlmac',
-    title: 'mlmac',
+    title: 'MLMAC',
     htmlAttrs: {
       lang: 'en',
     },
