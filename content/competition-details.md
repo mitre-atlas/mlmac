@@ -14,7 +14,7 @@ We consider a scenario in which a naive adversary has stolen an LLM and fine-tun
 
 ## Scenario
 
-Participants are tasked with attributing fine-tuned models to a set of base models by any means they deem appropriate. Every contestant will be given full access pairs for every fine-tuned model. In addition, each contestant will be given blind API access to each fine-tuned model to collect additional evidence. Contestants must submit a solution in the form of (_fine-tuned model, base model_) pairs. A list of candidate base models will be known, and there will also be a _None_ category to denote that a particular fine-tuned model does not inherit from any of the base models provided.
+Participants are tasked with attributing fine-tuned models to a set of base models by any means they deem appropriate. Every contestant will be given full access to every base model. In addition, each contestant will be given blind API access to each fine-tuned model to collect additional evidence. Contestants must submit a solution in the form of (_fine-tuned model, base model_) pairs. A list of candidate base models will be known, and there will also be a _None_ category to denote that a particular fine-tuned model does not inherit from any of the base models provided.
 
 ## Participating
 
