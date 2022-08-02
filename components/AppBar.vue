@@ -106,7 +106,7 @@ export default Vue.extend({
       details: {}
     }
   },
-  async fetch() {
+  async fetch(): Promise<any> {
     const { toc } = await this.$content('competition-details')
       .only('toc')
       .fetch()
