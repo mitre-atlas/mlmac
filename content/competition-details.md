@@ -2,7 +2,7 @@
 title: Competition Details
 ---
 
-The official rules and terms of services can be read at TBD.
+The official rules and terms of services can be read [here](/terms).
 
 ## Schedule
 
