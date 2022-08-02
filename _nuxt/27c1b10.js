@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[26],{628:function(e,n,t){"use strict";t.r(n);var r=t(0).a.extend({middleware:"auth",data:function(){return{}}}),o=t(85),component=Object(o.a)(r,(function(){var e=this,n=e._self._c;e._self._setupProxy;return n("div",[e._v("Logged in! "+e._s(e.$route.params.token))])}),[],!1,null,null,null);n.default=component.exports}}]);
