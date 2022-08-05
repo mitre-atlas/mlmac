@@ -1,0 +1,127 @@
+swagger: '2.0'
+info:
+  description: >-
+    Machine Learning Model Attribution Challenge API
+
+    In development, the below subject to change.
+  version: '1.0.0'
+  title: 'MLMAC'
+  termsOfService: 'https://mlmac.io/terms/'
+  contact:
+    email: 'TBD'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'api.mlmac.io:8080'
+basePath: '/'
+tags:
+  - name: 'Models'
+    description: 'MLMAC models'
+  - name: 'User'
+    description: 'Operations about user'
+    externalDocs:
+      description: 'Find out more about our store'
+      url: 'http://swagger.io'
+schemes:
+  - 'https'
+  - 'http'
+paths:
+  /query:
+    post:
+      tags:
+        - 'Models'
+      summary: 'Query a model'
+      description: ''
+      parameters:
+        - name: 'model'
+          in: 'query'
+          description: 'Model identifier'
+          required: true
+          type: 'integer'
+
+        - in: 'body'
+          name: 'body'
+          description: 'input'
+          required: true
+          schema:
+            $ref: '#/definitions/ModelInput'
+
+      responses:
+        200:
+          description: Model output
+          schema:
+            $ref: '#/definitions/ModelOutput'
+        400:
+          description: Bad request
+        500:
+          description: Internal server error
+        503:
+          description: Model is currently loading
+
+  /github_info:
+    get:
+      tags:
+        - 'User'
+      summary: 'My GitHub info'
+      description: ''
+
+      responses:
+        200:
+          description: TBD
+        400:
+          description: Bad request
+        500:
+          description: Internal server error
+
+  /status:
+    get:
+      tags:
+        - 'User'
+      summary: 'Query totals and other info'
+      description: ''
+
+      responses:
+        200:
+          description: TBD
+        400:
+          description: Bad request
+        500:
+          description: Internal server error
+
+securityDefinitions:
+  bearerAuth: # arbitrary name for the security scheme
+    name: 'Authorization'
+    in: 'header'
+    type: 'apiKey'
+    description: 'Use the value of "Bearer your_api_token"'
+definitions:
+  ModelInput:
+    type: 'object'
+    properties:
+      input:
+        type: 'string'
+  ModelOutput:
+    type: 'object'
+    properties:
+      status:
+        type: 'string'
+      result:
+        type: 'object'
+        properties:
+          generated_text:
+            type: 'string'
+      queries:
+        type: 'object'
+        description: String model number to integer number of queries for that model, if greater than 0
+        additionalProperties:
+          type: 'integer'
+        example:
+          '1': 9
+          '5': 2
+
+externalDocs:
+  description: 'Find out more about Swagger'
+  url: 'http://swagger.io'
+
+security:
+  - bearerAuth: []
