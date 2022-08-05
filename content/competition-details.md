@@ -26,9 +26,16 @@ Participants are tasked with attributing fine-tuned models to a set of base mode
 
 **Interacting with the fine-tuned models**. The competition API key is used to interact with anonymous fine-tuned models via [mlmac.io](http://mlmac.io). A contestant submits a prompt to the query endpoint and receives the generated text as a response. Fine-tuned models are referred to by a single integer between 0 and 12. For example, to query model 0, one issues a `POST https://api.mlmac.io:8080/query?model=0`. Details and example code are provided to contestants upon registration. The service counts the model queries for each user.
 
+## Submission
+
+Participants can submit their solutions via the [submission form](https://mlmac.io/submit). Participants may submit their solutions and revise their submissions as many times as they like. Only the final submission from each participant will be scored for prize consideration. Participants do not receive feedback on their solution upon submission.
+
+Halfway through the competition, on August 26 12:00 PM ET, the most recent submission from each participant will be scored. The leaderboard will  be updated publicly with each participant’s score, query count, and submission time. This is done to give participants some limited feedback on their performance and see how they compare to the rest of the field.
+
+
 ## Evaluation Criteria
 
-Solutions submitted to [https://mlmac.io](https://mlmac.io) will be evaluated by the following rank-ordered criteria:
+Solutions submitted to [mlmac.io](https://mlmac.io) will be evaluated by the following rank-ordered criteria:
 
 (1) **Correctness of submitted result**: the solution with a highest number of correct (_fine-tuned model, base model_) pairs.
 
@@ -46,4 +53,4 @@ Prizes will be worth USD $10,000 in total, divided among up to five winning solu
 
 **2nd place**. The second-highest-ranking submission that publishes a solution will be awarded USD $1,500.
 
-**Student bonus prizes**: Up to three (3) awards for student submissions will be awarded, worth the cost of admission plus a $1,500 travel voucher to present a solution at [CAMLIS 2022](https://camlis.org) in October or at [SATML 2023](https://satml.org/), pending the conference organizers’ final location decisions. Participants must be current undergraduate or graduate degree-seeking students at an accredited university. (This award could be added to 1st or 2nd-place prizes if a student wins or a non-winning student).
+**Student bonus prizes**: Up to three (3) awards for student submissions will be awarded, worth the cost of admission plus a $1,500 travel voucher to present a solution at [CAMLIS 2022](https://camlis.org) in October or at [SATML 2023](https://satml.org/) in February, pending the conference organizers’ final location decisions. Participants must be current undergraduate or graduate degree-seeking students at an accredited university. (This award could be added to 1st or 2nd-place prizes if a student wins or a non-winning student).
