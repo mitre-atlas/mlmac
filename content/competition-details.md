@@ -18,7 +18,7 @@ Participants are tasked with attributing fine-tuned models to a set of base mode
 
 ## Participating
 
-**Requirements**. Contestants must register for the competition with a valid GitHub account and agree to [terms of service](link to ToS) outlining the rules, judging criteria, and legal elements about indemnity and awards disbursement. Contestants may consist of a team, but the team may only participate through a single account. Cooperation or collusion between accounts will disqualify contestants.
+**Requirements**. Contestants must register for the competition with a valid GitHub account and agree to [terms of service](/terms) outlining the rules, judging criteria, and legal elements about indemnity and awards disbursement. Contestants may consist of a team, but the team may only participate through a single account. Cooperation or collusion between accounts will disqualify contestants.
 
 **Getting started**. Upon registration, each contestant will be provided with a list of candidate base models, a competition API key, and example code for interacting with the [mlmac.io](http://mlmac.io) inference API that serves the fine-tuned models.
 
@@ -30,8 +30,7 @@ Participants are tasked with attributing fine-tuned models to a set of base mode
 
 Participants can submit their solutions via the [submission form](https://mlmac.io/submit). Participants may submit their solutions and revise their submissions as many times as they like. Only the final submission from each participant will be scored for prize consideration. Participants do not receive feedback on their solution upon submission.
 
-Halfway through the competition, on August 26 12:00 PM ET, the most recent submission from each participant will be scored. The leaderboard will  be updated publicly with each participant’s score, query count, and submission time. This is done to give participants some limited feedback on their performance and see how they compare to the rest of the field.
-
+Halfway through the competition, on August 26 12:00 PM ET, the most recent submission from each participant will be scored. The leaderboard will be updated publicly with each participant’s score, query count, and submission time. This is done to give participants some limited feedback on their performance and see how they compare to the rest of the field.
 
 ## Evaluation Criteria
 
