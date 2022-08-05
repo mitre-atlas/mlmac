@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - api-docs
   pull_request:
 
 jobs:
