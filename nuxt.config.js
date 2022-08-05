@@ -65,13 +65,7 @@ export default {
     proxy: true, // Can be also an object with default options
   },
 
-  proxy: {
-    '/api/': {
-      target: 'https://api.mlmac.io:8080',
-      pathRewrite: { '^/api/': '' },
-      changeOrigin: true,
-    },
-  },
+  proxy: {},
   router: {
     // https://v3.router.vuejs.org/guide/advanced/scroll-behavior
     scrollBehavior: (to, from, savedPosition) => {
