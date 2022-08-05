@@ -49,6 +49,8 @@ paths:
           description: Successful model output
           schema:
             $ref: '#/definitions/ModelOutputSuccess'
+        401:
+          description: Unauthorized, missing Authorization Bearer token in request header
         500:
           description: Internal server error
 
@@ -67,6 +69,8 @@ paths:
       responses:
         200:
           description: Authenticated GitHub user data - https://docs.github.com/en/rest/users/users#get-the-authenticated-user
+        401:
+          description: Unauthorized, missing Authorization Bearer token in request header
 
   /status:
     get:
@@ -80,6 +84,8 @@ paths:
           description: User stats
           schema:
             $ref: '#/definitions/Status'
+        401:
+          description: Unauthorized, missing Authorization Bearer token in request header
 
 securityDefinitions:
   bearerAuth: # arbitrary name for the security scheme
@@ -87,6 +93,7 @@ securityDefinitions:
     in: 'header'
     type: 'apiKey'
     description: 'Use the value of "Bearer your_api_token"'
+
 definitions:
   ModelInput:
     type: 'object'
@@ -150,10 +157,6 @@ definitions:
         type: integer
       queries:
         $ref: '#/definitions/Queries'
-
-externalDocs:
-  description: 'Find out more about Swagger'
-  url: 'http://swagger.io'
 
 security:
   - bearerAuth: []

@@ -37,7 +37,7 @@ export default {
 #swagger {
   background-color: white;
 }
-#swagger >>> .v-application .info {
+#swagger >>> .info {
   background-color: unset !important;
   wahoo: true;
 }
