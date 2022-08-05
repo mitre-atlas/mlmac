@@ -18,6 +18,10 @@ export default Vue.extend({
   },
   async fetch() {
     this.overview = await this.$content('overview').fetch()
+  },
+  mounted() {
+    // Force dark mode
+    document.documentElement.classList.add('dark')
   }
 })
 </script>
