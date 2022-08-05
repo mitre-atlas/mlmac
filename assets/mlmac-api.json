@@ -1,13 +1,10 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Machine Learning Model Attribution Challenge API\nIn development, the below subject to change.",
+    "description": "Machine Learning Model Attribution Challenge API\n\nIn development, the below subject to change.\n",
     "version": "1.0.0",
     "title": "MLMAC",
     "termsOfService": "https://mlmac.io/terms/",
-    "contact": {
-      "email": "TBD"
-    },
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -22,11 +19,7 @@
     },
     {
       "name": "User",
-      "description": "Operations about user",
-      "externalDocs": {
-        "description": "Find out more about our store",
-        "url": "http://swagger.io"
-      }
+      "description": "Operations about user"
     }
   ],
   "schemes": [
@@ -45,9 +38,11 @@
           {
             "name": "model",
             "in": "query",
-            "description": "Model identifier",
+            "description": "Model identifier from 1 to 13",
             "required": true,
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 13
           },
           {
             "in": "body",
@@ -61,19 +56,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Model output",
+            "description": "Successful model output",
             "schema": {
-              "$ref": "#/definitions/ModelOutput"
+              "$ref": "#/definitions/ModelOutputSuccess"
             }
-          },
-          "400": {
-            "description": "Bad request"
           },
           "500": {
             "description": "Internal server error"
           },
           "503": {
-            "description": "Model is currently loading"
+            "description": "Model is currently loading",
+            "schema": {
+              "$ref": "#/definitions/ModelOutputError"
+            }
           }
         }
       }
@@ -87,13 +82,7 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "TBD"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "500": {
-            "description": "Internal server error"
+            "description": "Authenticated GitHub user data - https://docs.github.com/en/rest/users/users#get-the-authenticated-user"
           }
         }
       }
@@ -107,13 +96,10 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "TBD"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "500": {
-            "description": "Internal server error"
+            "description": "User stats",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
           }
         }
       }
@@ -136,11 +122,15 @@
         }
       }
     },
-    "ModelOutput": {
+    "ModelOutputSuccess": {
       "type": "object",
       "properties": {
         "status": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "success"
+          ],
+          "description": "Query status"
         },
         "result": {
           "type": "object",
@@ -151,15 +141,68 @@
           }
         },
         "queries": {
+          "$ref": "#/definitions/Queries"
+        }
+      }
+    },
+    "ModelOutputError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "error"
+          ],
+          "description": "Query status"
+        },
+        "result": {
           "type": "object",
-          "description": "String model number to integer number of queries for that model, if greater than 0",
-          "additionalProperties": {
-            "type": "integer"
-          },
-          "example": {
-            "1": 9,
-            "5": 2
+          "properties": {
+            "error": {
+              "type": "string",
+              "description": "Either the model is loading, or another error description"
+            },
+            "estimated_time": {
+              "type": "number",
+              "description": "Estimated time in seconds until the model is ready to be queried"
+            }
           }
+        },
+        "queries": {
+          "$ref": "#/definitions/Queries"
+        }
+      }
+    },
+    "Queries": {
+      "type": "object",
+      "description": "String model number to integer number of queries for that model, if greater than 0",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "example": {
+        "1": 9,
+        "5": 2
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "api_key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "GitHub username"
+        },
+        "created": {
+          "type": "string",
+          "description": "Date string of when the API key was registered"
+        },
+        "total_queries": {
+          "type": "integer"
+        },
+        "queries": {
+          "$ref": "#/definitions/Queries"
         }
       }
     }

@@ -1,14 +1,12 @@
 swagger: '2.0'
 info:
-  description: >-
+  description: |
     Machine Learning Model Attribution Challenge API
 
     In development, the below subject to change.
   version: '1.0.0'
   title: 'MLMAC'
   termsOfService: 'https://mlmac.io/terms/'
-  contact:
-    email: 'TBD'
   license:
     name: 'Apache 2.0'
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
@@ -19,9 +17,7 @@ tags:
     description: 'MLMAC models'
   - name: 'User'
     description: 'Operations about user'
-    externalDocs:
-      description: 'Find out more about our store'
-      url: 'http://swagger.io'
+
 schemes:
   - 'https'
   - 'http'
@@ -35,9 +31,11 @@ paths:
       parameters:
         - name: 'model'
           in: 'query'
-          description: 'Model identifier'
+          description: 'Model identifier from 1 to 13'
           required: true
           type: 'integer'
+          minimum: 1
+          maximum: 13
 
         - in: 'body'
           name: 'body'
@@ -48,15 +46,16 @@ paths:
 
       responses:
         200:
-          description: Model output
+          description: Successful model output
           schema:
-            $ref: '#/definitions/ModelOutput'
-        400:
-          description: Bad request
+            $ref: '#/definitions/ModelOutputSuccess'
         500:
           description: Internal server error
+
         503:
           description: Model is currently loading
+          schema:
+            $ref: '#/definitions/ModelOutputError'
 
   /github_info:
     get:
@@ -67,11 +66,7 @@ paths:
 
       responses:
         200:
-          description: TBD
-        400:
-          description: Bad request
-        500:
-          description: Internal server error
+          description: Authenticated GitHub user data - https://docs.github.com/en/rest/users/users#get-the-authenticated-user
 
   /status:
     get:
@@ -82,11 +77,9 @@ paths:
 
       responses:
         200:
-          description: TBD
-        400:
-          description: Bad request
-        500:
-          description: Internal server error
+          description: User stats
+          schema:
+            $ref: '#/definitions/Status'
 
 securityDefinitions:
   bearerAuth: # arbitrary name for the security scheme
@@ -100,24 +93,63 @@ definitions:
     properties:
       input:
         type: 'string'
-  ModelOutput:
+  ModelOutputSuccess:
     type: 'object'
     properties:
       status:
         type: 'string'
+        enum:
+          - success
+        description: Query status
       result:
         type: 'object'
         properties:
           generated_text:
             type: 'string'
       queries:
+        $ref: '#/definitions/Queries'
+  ModelOutputError:
+    type: 'object'
+    properties:
+      status:
+        type: 'string'
+        enum:
+          - error
+        description: Query status
+      result:
         type: 'object'
-        description: String model number to integer number of queries for that model, if greater than 0
-        additionalProperties:
-          type: 'integer'
-        example:
-          '1': 9
-          '5': 2
+        properties:
+          error:
+            type: string
+            description: 'Either the model is loading, or another error description'
+          estimated_time:
+            type: number
+            description: Estimated time in seconds until the model is ready to be queried
+      queries:
+        $ref: '#/definitions/Queries'
+  Queries:
+    type: 'object'
+    description: String model number to integer number of queries for that model, if greater than 0
+    additionalProperties:
+      type: 'integer'
+    example:
+      '1': 9
+      '5': 2
+  Status:
+    type: 'object'
+    properties:
+      api_key:
+        type: string
+      name:
+        type: string
+        description: GitHub username
+      created:
+        type: string
+        description: Date string of when the API key was registered
+      total_queries:
+        type: integer
+      queries:
+        $ref: '#/definitions/Queries'
 
 externalDocs:
   description: 'Find out more about Swagger'
