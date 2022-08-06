@@ -24,7 +24,7 @@ Participants are tasked with attributing fine-tuned models to a set of base mode
 
 **Interacting with the base models**. The base models are available via the [model-attribution-challenge](https://huggingface.co/model-attribution-challenge) organization on huggingface. Contestants have full access the the base models and are free to query them via the huggingface API or download them.
 
-**Interacting with the fine-tuned models**. The competition API key is used to interact with anonymous fine-tuned models via [mlmac.io](http://mlmac.io). A contestant submits a prompt to the query endpoint and receives the generated text as a response. Fine-tuned models are referred to by a single integer between 0 and 12. For example, to query model 0, one issues a `POST https://api.mlmac.io:8080/query?model=0`. Details and example code are provided to contestants upon registration. The service counts the model queries for each user.
+**Interacting with the fine-tuned models**. The competition API key is used to interact with anonymous fine-tuned models via [mlmac.io](http://mlmac.io). A contestant submits a prompt to the query endpoint and receives the generated text as a response. Fine-tuned models are referred to by a single integer between 0 and 11. For example, to query model 0, one issues a `POST https://api.mlmac.io:8080/query?model=0`. Details and example code are provided to contestants upon registration. The service counts the model queries for each user.
 
 ## Submission
 

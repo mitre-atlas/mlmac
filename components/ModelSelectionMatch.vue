@@ -10,8 +10,7 @@
           solo
           :items="items"
           :prefix="`Model ${num} is`"
-          placeholder="________"
-        ></v-autocomplete>
+          placeholder="________"></v-autocomplete>
         <!--
            :prepend-icon="`${num}`"
            :label="`Model ${num}`"
@@ -44,7 +43,7 @@ export default Vue.extend({
   },
   computed: {
     modelNumberChoices(): number[] {
-      return Array.from(Array(this.numChoices)).map((e, i) => i + 1)
+      return Array.from(Array(this.numChoices)).map((e, i) => i)
     },
     items(): object[] {
       const modelItems = this.modelNames.map((m: string) => {
