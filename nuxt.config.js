@@ -37,7 +37,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxt/content', '@nuxt/http', '@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxt/content',
+    '@nuxt/http',
+    '@nuxtjs/tailwindcss',
+    'cookie-universal-nuxt',
+  ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
