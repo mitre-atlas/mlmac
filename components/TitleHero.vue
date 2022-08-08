@@ -13,7 +13,10 @@
       <CountdownTimer></CountdownTimer>
     </v-row>
     <v-row v-if="!isUserAuthenticated" align="center" justify="center">
-      <v-btn rounded x-large color="primary" @click="login">Login</v-btn>
+      <v-btn rounded x-large color="primary" @click="login">
+        <v-icon left> mdi-github </v-icon>
+        Login
+      </v-btn>
     </v-row>
   </v-container>
 </template>

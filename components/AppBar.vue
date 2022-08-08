@@ -26,9 +26,15 @@
         </v-btn>
       </div>
 
-      <v-menu v-if="isUserAuthenticated" bottom offset-y>
+      <v-menu bottom offset-y>
         <template #activator="{ on, attrs }">
-          <v-btn dark text x-large v-bind="attrs" v-on="on">
+          <v-btn
+            v-if="isUserAuthenticated"
+            dark
+            text
+            x-large
+            v-bind="attrs"
+            v-on="on">
             <v-avatar>
               <v-img dark :src="githubInfo.avatarUrl"></v-img>
             </v-avatar>
