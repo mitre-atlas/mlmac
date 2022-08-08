@@ -7,6 +7,8 @@ export const state = () => ({
   created: '',
   total_queries: -1,
   queries: -1,
+  githubUsername: '',
+  githubAvatarUrl: '',
 })
 
 export const mutations = {
@@ -22,10 +24,14 @@ export const mutations = {
     state.queries = status.queries
     console.log('set status', status)
   },
+  setGitHubInfo(state, info) {
+    state.githubUsername = info.login
+    state.githubAvatarUrl = info.avatar_url
+  },
 }
 
 export const actions = {
-  login({ commit, dispatch, redirect }, token) {
+  login({ commit }, token) {
     return new Promise((resolve, reject) => {
       const savedToken = this.$cookies.get(COOKIE_NAME)
 
@@ -39,8 +45,7 @@ export const actions = {
         this.$cookies.set(COOKIE_NAME, token)
       } else {
         console.log('store - no cookie found and no token provided, redirect')
-        // redirect('https://api.mlmac.io:8080/github/auth')
-        reject('User needs to authenticate')
+        reject(new Error('User needs to authenticate'))
       }
 
       // Save the token and change auth status
@@ -48,7 +53,6 @@ export const actions = {
 
       // Set request headers
       this.$http.setToken(token, 'Bearer')
-      console.log('after set token $http', this.$http)
 
       resolve('Logged in')
     })
@@ -57,5 +61,9 @@ export const actions = {
     // Update the status
     const status = await this.$http.$get('https://api.mlmac.io:8080/status')
     commit('setStatus', status)
+  },
+  async getGitHubInfo({ commit }) {
+    const info = await this.$http.$get('https://api.mlmac.io:8080/github_info')
+    commit('setGitHubInfo', info)
   },
 }
