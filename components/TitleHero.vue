@@ -16,7 +16,7 @@
       v-if="!$store.state.isUserAuthenticated"
       align="center"
       justify="center">
-      <v-btn rounded x-large color="primary" click="login">Login</v-btn>
+      <v-btn rounded x-large color="primary" @click="login">Login</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -33,9 +33,14 @@ export default Vue.extend({
   },
   methods: {
     login() {
-      this.$store.dispatch('login').catch(() => {
-        window.location.href = 'https://api.mlmac.io:8080/github/auth'
-      })
+      this.$store
+        .dispatch('login')
+        .then(() => {
+          this.$store.dispatch('getGitHubInfo')
+        })
+        .catch(() => {
+          window.location.href = 'https://api.mlmac.io:8080/github/auth'
+        })
     }
   }
 })

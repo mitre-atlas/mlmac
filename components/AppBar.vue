@@ -18,20 +18,27 @@
 
     <v-navigation-drawer v-model="drawer" app bottom clipped>
       <template #prepend>
-        <v-list-item>
+        <v-list-item v-if="!$store.state.isUserAuthenticated">
           <v-list-item-content>
-            <v-btn @click="login"
-              ><v-icon left> mdi-github </v-icon>Login</v-btn
-            >
+            <v-btn @click="login">
+              <v-icon left> mdi-github </v-icon>
+              Login
+            </v-btn>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item two-line>
+        <v-list-item v-else two-line>
           <v-list-item-avatar>
-            <v-icon dark> mdi-account-circle </v-icon>
+            <!-- <v-icon dark> mdi-account-circle </v-icon> -->
+            <v-img dark :src="$store.state.githubAvatarUrl"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title>Username</v-list-item-title>
-            <v-list-item-subtitle>Status</v-list-item-subtitle>
+            <v-list-item-title>
+              {{ $store.state.githubUsername }}</v-list-item-title
+            >
+            <v-list-item-subtitle
+              >{{ $store.state.total_queries }} total
+              queries</v-list-item-subtitle
+            >
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -131,9 +138,14 @@ export default Vue.extend({
   },
   methods: {
     login() {
-      this.$store.dispatch('login').catch(() => {
-        window.location.href = 'https://api.mlmac.io:8080/github/auth'
-      })
+      this.$store
+        .dispatch('login')
+        .then(() => {
+          this.$store.dispatch('getGitHubInfo')
+        })
+        .catch(() => {
+          window.location.href = 'https://api.mlmac.io:8080/github/auth'
+        })
     }
   }
 })

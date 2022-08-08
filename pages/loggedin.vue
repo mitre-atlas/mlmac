@@ -29,7 +29,9 @@ export default Vue.extend({
   mounted() {
     this.$store
       .dispatch('login', this.$route.query.user)
-      .then(() => console.log('loggedin - successful'))
+      .then(() => {
+        this.$store.dispatch('getGitHubInfo')
+      })
       .catch(() => {
         window.location.href = 'https://api.mlmac.io:8080/github/auth'
       })
