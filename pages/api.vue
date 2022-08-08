@@ -12,14 +12,9 @@ import spec from '~/assets/mlmac-api.json'
 
 export default {
   name: 'ApiPage',
+  middleware: 'auth',
   head() {
     return {
-      // script: [
-      //   {
-      //     src: 'https://unpkg.com/swagger-ui-dist@4.13.2/swagger-ui-bundle.js',
-      //     async: true
-      //   }
-      // ],
       link: [
         {
           rel: 'stylesheet',
@@ -29,9 +24,7 @@ export default {
     }
   },
   mounted() {
-    console.log('mounted')
     this.$nextTick(function () {
-      console.log('next tick swagger init')
       window.ui = SwaggerUIBundle({
         spec,
         dom_id: '#swagger'

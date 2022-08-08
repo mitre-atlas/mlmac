@@ -90,8 +90,7 @@ export const actions = {
     commit('setGitHubInfo', info)
   },
   async logout({ commit }) {
-    const logout = await this.$http.$get('https://api.mlmac.io:8080/logout')
-    console.log('logout', logout)
+    await this.$http.$get('https://api.mlmac.io:8080/logout')
     commit('logout')
     this.$cookies.remove(COOKIE_NAME)
   },

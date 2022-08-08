@@ -18,7 +18,8 @@
 
 <script>
 export default {
-  name: 'SubmitPage'
+  name: 'SubmitPage',
+  middleware: 'auth'
 }
 </script>
 
