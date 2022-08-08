@@ -26,10 +26,10 @@
         </v-btn>
       </div>
 
-      <v-menu bottom offset-y>
+      <v-menu v-if="isUserAuthenticated" bottom offset-y>
         <template #activator="{ on, attrs }">
           <v-btn dark text x-large v-bind="attrs" v-on="on">
-            <v-avatar v-if="isUserAuthenticated">
+            <v-avatar>
               <v-img dark :src="githubInfo.avatarUrl"></v-img>
             </v-avatar>
             <v-icon right>mdi-menu-down</v-icon>
@@ -171,6 +171,11 @@ export default Vue.extend({
         // }
       ],
       authLinks: [
+        {
+          name: 'API Docs',
+          route: '/api',
+          items: []
+        },
         {
           name: 'Submit Answers',
           route: '/submit',
