@@ -93,5 +93,6 @@ export const actions = {
     const logout = await this.$http.$get('https://api.mlmac.io:8080/logout')
     console.log('logout', logout)
     commit('logout')
+    this.$cookies.remove(COOKIE_NAME)
   },
 }
