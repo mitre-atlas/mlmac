@@ -31,7 +31,7 @@ export default {
     window.addEventListener('load', this.swaggerInit)
   },
   beforeDestroy() {
-    window.removeEventListener('load', swaggerInit)
+    window.removeEventListener('load', this.swaggerInit)
   },
   methods: {
     swaggerInit() {
