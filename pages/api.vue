@@ -1,24 +1,32 @@
 <template>
   <div>
     <div id="swagger" class="swagger"></div>
-    <script
-      src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js"
-      crossorigin></script>
+    <!-- <script
+      src=""
+      crossorigin
+      defer></script> -->
   </div>
 </template>
 
 <script>
+import SwaggerUIBundle from '~/static/swagger-ui-4.13.2/swagger-ui-bundle.js'
 import spec from '~/assets/mlmac-api.json'
 
 export default {
   name: 'ApiPage',
-  middleware: 'auth',
+  // middleware: 'auth',
   head() {
     return {
+      script: [
+        {
+          src: '/swagger-ui-4.13.2/swagger-ui-bundle.js'
+        }
+      ],
       link: [
         {
           rel: 'stylesheet',
-          href: 'https://unpkg.com/swagger-ui-dist@4.13.2/swagger-ui.css'
+          type: 'text/css',
+          href: '/swagger-ui-4.13.2/swagger-ui.css'
         }
       ]
     }
@@ -40,6 +48,5 @@ export default {
 }
 #swagger >>> .info {
   background-color: unset !important;
-  wahoo: true;
 }
 </style>
