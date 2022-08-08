@@ -15,7 +15,7 @@ export const mutations = {
   setUserToken(state, token) {
     state.userToken = token
     state.isUserAuthenticated = true
-    console.log('set user token')
+    console.log('set user token', state.isUserAuthenticated)
   },
   setStatus(state, status) {
     state.name = status.name
