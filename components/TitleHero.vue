@@ -16,9 +16,7 @@
       v-if="!$store.state.isUserAuthenticated"
       align="center"
       justify="center">
-      <v-btn rounded x-large color="primary" click="$store.dispatch('login')"
-        >Login</v-btn
-      >
+      <v-btn rounded x-large color="primary" click="login">Login</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -31,6 +29,13 @@ export default Vue.extend({
     return {
       title: 'Machine Learning Model Attribution Challenge',
       subtitle: ''
+    }
+  },
+  methods: {
+    login() {
+      this.$store.dispatch('login').catch(() => {
+        window.location.href = 'https://api.mlmac.io:8080/github/auth'
+      })
     }
   }
 })

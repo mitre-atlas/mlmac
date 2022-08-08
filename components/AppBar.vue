@@ -20,7 +20,7 @@
       <template #prepend>
         <v-list-item>
           <v-list-item-content>
-            <v-btn @click="$store.dispatch('login')"
+            <v-btn @click="login"
               ><v-icon left> mdi-github </v-icon>Login</v-btn
             >
           </v-list-item-content>
@@ -128,6 +128,13 @@ export default Vue.extend({
       .fetch()
     // Details
     this.links[1].items = toc
+  },
+  methods: {
+    login() {
+      this.$store.dispatch('login').catch(() => {
+        window.location.href = 'https://api.mlmac.io:8080/github/auth'
+      })
+    }
   }
 })
 </script>
