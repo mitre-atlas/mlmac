@@ -49,7 +49,9 @@
             >
           </v-list-item>
           <v-divider></v-divider>
-          <v-btn v-if="isUserAuthenticated" nuxt to="/logout"> Logout </v-btn>
+          <v-btn v-if="isUserAuthenticated" block nuxt to="/logout">
+            Logout
+          </v-btn>
         </v-list>
       </v-menu>
     </v-app-bar>

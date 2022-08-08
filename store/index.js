@@ -39,7 +39,7 @@ export const getters = {
     }
   },
   totalQueries(state) {
-    return state.totalQueries
+    return state.total_queries
   },
 }
 
