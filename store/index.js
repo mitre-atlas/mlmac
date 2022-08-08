@@ -1,28 +1,26 @@
 const COOKIE_NAME = 'mlmac-token'
 
 export const state = () => ({
-  isUserAuthenticated: true,
+  isUserAuthenticated: false,
   userToken: '',
   name: '',
   created: '',
   total_queries: -1,
   queries: -1,
-  githubUsername: 'hello',
-  githubAvatarUrl: 'https://cdn.vuetifyjs.com/images/john.jpg',
+  githubUsername: '',
+  githubAvatarUrl: '',
 })
 
 export const mutations = {
   setUserToken(state, token) {
     state.userToken = token
     state.isUserAuthenticated = true
-    console.log('set user token', state.isUserAuthenticated)
   },
   setStatus(state, status) {
     state.name = status.name
     state.created = new Date(status.created)
     state.total_queries = status.total_queries
     state.queries = status.queries
-    console.log('set status', status)
   },
   setGitHubInfo(state, info) {
     state.githubUsername = info.login
