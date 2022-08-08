@@ -23,8 +23,10 @@ export default {
   middleware: 'auth',
   methods: {
     formsLoaded() {
-      const tokenInput = document.querySelector('input[type=text]')
-      tokenInput.value = this.$store.state.userToken
+      this.$nextTick(() => {
+        const tokenInput = document.querySelector('input[type=text]')
+        tokenInput.value = this.$store.state.userToken
+      })
     }
   }
 }
