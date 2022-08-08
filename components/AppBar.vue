@@ -210,6 +210,7 @@ export default Vue.extend({
         .dispatch('login')
         .then(() => {
           this.$store.dispatch('getGitHubInfo')
+          this.$store.dispatch('updateStatus')
         })
         .catch(() => {
           window.location.href = 'https://api.mlmac.io:8080/github/auth'
