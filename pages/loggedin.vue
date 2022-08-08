@@ -21,7 +21,6 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'LoggedinPage',
-  middleware: 'auth',
   data() {
     return {
       title: 'Logged In',
