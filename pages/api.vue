@@ -16,30 +16,27 @@ export default {
     return {
       // script: [
       //   {
-      //     src: 'https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js'
+      //     src: 'https://unpkg.com/swagger-ui-dist@4.13.2/swagger-ui-bundle.js',
+      //     async: true
       //   }
       // ],
       link: [
         {
           rel: 'stylesheet',
-          href: 'https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css'
+          href: 'https://unpkg.com/swagger-ui-dist@4.13.2/swagger-ui.css'
         }
       ]
     }
   },
   mounted() {
-    window.addEventListener('load', this.swaggerInit)
-  },
-  beforeDestroy() {
-    window.removeEventListener('load', this.swaggerInit)
-  },
-  methods: {
-    swaggerInit() {
+    console.log('mounted')
+    this.$nextTick(function () {
+      console.log('next tick swagger init')
       window.ui = SwaggerUIBundle({
         spec,
         dom_id: '#swagger'
       })
-    }
+    })
   }
 }
 </script>
