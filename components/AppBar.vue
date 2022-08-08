@@ -1,14 +1,20 @@
 <template>
   <div>
+    <!-- App bar -->
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title>
         <nuxt-link to="/">MLMAC</nuxt-link>
       </v-app-bar-title>
+
       <v-spacer></v-spacer>
+
+      <!-- Default buttons -->
       <v-btn v-for="link in links" :key="link.name" text nuxt :to="link.route">
         {{ link.name }}
       </v-btn>
+
+      <!-- Buttons once logged in -->
       <div v-if="isUserAuthenticated">
         <v-btn
           v-for="link in authLinks"
@@ -19,9 +25,32 @@
           {{ link.name }}
         </v-btn>
       </div>
+
+      <v-menu bottom offset-y>
+        <template #activator="{ on, attrs }">
+          <v-btn dark text x-large v-bind="attrs" v-on="on">
+            <v-avatar v-if="isUserAuthenticated">
+              <v-img dark :src="githubInfo.avatarUrl"></v-img>
+            </v-avatar>
+            <v-icon right>mdi-menu-down</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item>
+            <v-list-item-title
+              >Logged in as {{ githubInfo.username }}</v-list-item-title
+            >
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-btn v-if="isUserAuthenticated" nuxt to="/logout"> Logout </v-btn>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
+    <!-- Side navigation drawer -->
     <v-navigation-drawer v-model="drawer" app bottom clipped>
+      <!-- User details -->
       <template #prepend>
         <v-list-item v-if="!isUserAuthenticated">
           <v-list-item-content>
@@ -34,15 +63,12 @@
         <v-list-item v-else two-line>
           <v-list-item-avatar>
             <!-- <v-icon dark> mdi-account-circle </v-icon> -->
-            <v-img dark :src="$store.state.githubAvatarUrl"></v-img>
+            <v-img dark :src="githubInfo.avatarUrl"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title>
-              {{ $store.state.githubUsername }}</v-list-item-title
-            >
+            <v-list-item-title> {{ githubInfo.username }}</v-list-item-title>
             <v-list-item-subtitle
-              >{{ $store.state.total_queries }} total
-              queries</v-list-item-subtitle
+              >{{ totalQueries }} total queries</v-list-item-subtitle
             >
           </v-list-item-content>
         </v-list-item>
@@ -51,6 +77,7 @@
       <v-divider></v-divider>
 
       <v-list nav>
+        <!-- Default links, including details headers -->
         <div v-for="link in links" :key="link.route">
           <v-list-group
             v-if="'items' in link && link.items.length > 0"
@@ -81,6 +108,7 @@
           </v-list-item>
         </div>
 
+        <!-- Links after login -->
         <div v-if="isUserAuthenticated">
           <v-list-item
             v-for="link in authLinks"
@@ -94,6 +122,7 @@
         </div>
       </v-list>
 
+      <!-- Footer of nav -->
       <template #append>
         <v-divider></v-divider>
         <v-list nav>
@@ -103,6 +132,9 @@
           <v-list-item nuxt to="/terms">
             <v-list-item-title>Terms of Service</v-list-item-title>
           </v-list-item>
+          <v-btn v-if="isUserAuthenticated" block nuxt to="/logout">
+            Logout
+          </v-btn>
         </v-list>
       </template>
     </v-navigation-drawer>
@@ -157,7 +189,7 @@ export default Vue.extend({
     this.links[1].items = toc
   },
   computed: {
-    ...mapGetters(['isUserAuthenticated'])
+    ...mapGetters(['isUserAuthenticated', 'githubInfo', 'totalQueries'])
   },
   methods: {
     login() {
