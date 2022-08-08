@@ -24,36 +24,30 @@
           :to="link.route">
           {{ link.name }}
         </v-btn>
+
+        <v-menu bottom offset-y>
+          <template #activator="{ on, attrs }">
+            <v-btn dark text large v-bind="attrs" v-on="on">
+              <v-avatar size="36">
+                <v-img dark :src="githubInfo.avatarUrl"></v-img>
+              </v-avatar>
+              <v-icon right>mdi-menu-down</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item>
+              <v-list-item-title
+                >Logged in as {{ githubInfo.username }}</v-list-item-title
+              >
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-btn v-if="isUserAuthenticated" block nuxt to="/logout">
+              Logout
+            </v-btn>
+          </v-list>
+        </v-menu>
       </div>
-
-      <v-menu bottom offset-y>
-        <template #activator="{ on, attrs }">
-          <v-btn
-            v-if="isUserAuthenticated"
-            dark
-            text
-            x-large
-            v-bind="attrs"
-            v-on="on">
-            <v-avatar>
-              <v-img dark :src="githubInfo.avatarUrl"></v-img>
-            </v-avatar>
-            <v-icon right>mdi-menu-down</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item>
-            <v-list-item-title
-              >Logged in as {{ githubInfo.username }}</v-list-item-title
-            >
-          </v-list-item>
-          <v-divider></v-divider>
-          <v-btn v-if="isUserAuthenticated" block nuxt to="/logout">
-            Logout
-          </v-btn>
-        </v-list>
-      </v-menu>
     </v-app-bar>
 
     <!-- Side navigation drawer -->
