@@ -27,6 +27,7 @@ import {
   MITRE_LOGO,
   MICROSOFT_LOGO,
   HUGGINGFACE_LOGO,
+  SCHMIDTFUTURES_LOGO,
   ROBUSTINTELLIGENCE_LOGO,
   LINCOLNNETWORK_LOGO
 } from '~/assets/imgs/logos'
@@ -51,13 +52,11 @@ export default Vue.extend({
           url: 'https://huggingface.co/',
           logo: HUGGINGFACE_LOGO
         },
-        /*
         {
           name: 'Schmidt Futures',
           url: 'https://www.schmidtfutures.com/',
           logo: SCHMIDTFUTURES_LOGO
         },
-        */
         {
           name: 'Robust Intelligence',
           url: 'https://www.robustintelligence.com/',
