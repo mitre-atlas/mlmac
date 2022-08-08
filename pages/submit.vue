@@ -9,7 +9,8 @@
         height="2000"
         frameborder="0"
         marginheight="0"
-        marginwidth="0">
+        marginwidth="0"
+        @load="formsLoaded">
         Loading…
       </iframe>
     </v-sheet>
@@ -19,7 +20,13 @@
 <script>
 export default {
   name: 'SubmitPage',
-  middleware: 'auth'
+  middleware: 'auth',
+  methods: {
+    formsLoaded() {
+      const tokenInput = document.querySelector('input[type=text]')
+      tokenInput.value = this.$store.state.userToken
+    }
+  }
 }
 </script>
 
