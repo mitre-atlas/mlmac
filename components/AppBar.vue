@@ -15,7 +15,7 @@
       </v-btn>
 
       <!-- Buttons once logged in -->
-      <div v-if="isUserAuthenticated">
+      <div v-show="isUserAuthenticated">
         <v-btn
           v-for="link in authLinks"
           :key="link.name"
@@ -42,12 +42,7 @@
               >
             </v-list-item>
             <v-divider></v-divider>
-            <v-btn
-              v-if="isUserAuthenticated"
-              block
-              @click="$store.dispatch('logout')">
-              Logout
-            </v-btn>
+            <v-btn block @click="$store.dispatch('logout')"> Logout </v-btn>
           </v-list>
         </v-menu>
       </div>
@@ -114,7 +109,7 @@
         </div>
 
         <!-- Links after login -->
-        <div v-if="isUserAuthenticated">
+        <div v-show="isUserAuthenticated">
           <v-list-item
             v-for="link in authLinks"
             :key="link.route"
@@ -138,7 +133,7 @@
             <v-list-item-title>Terms of Service</v-list-item-title>
           </v-list-item>
           <v-btn
-            v-if="isUserAuthenticated"
+            v-show="isUserAuthenticated"
             block
             @click="$store.dispatch('logout')">
             Logout
