@@ -30,6 +30,12 @@ export const mutations = {
   },
 }
 
+export const getters = {
+  isUserAuthenticated(state) {
+    return state.isUserAuthenticated
+  },
+}
+
 export const actions = {
   login({ commit }, token) {
     return new Promise((resolve, reject) => {

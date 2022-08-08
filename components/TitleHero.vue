@@ -12,10 +12,7 @@
     <v-row align="center" justify="center">
       <CountdownTimer></CountdownTimer>
     </v-row>
-    <v-row
-      v-if="!$store.state.isUserAuthenticated"
-      align="center"
-      justify="center">
+    <v-row v-if="!isUserAuthenticated" align="center" justify="center">
       <v-btn rounded x-large color="primary" @click="login">Login</v-btn>
     </v-row>
   </v-container>
@@ -23,6 +20,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   data() {
@@ -30,6 +28,9 @@ export default Vue.extend({
       title: 'Machine Learning Model Attribution Challenge',
       subtitle: ''
     }
+  },
+  computed: {
+    ...mapGetters(['isUserAuthenticated'])
   },
   methods: {
     login() {

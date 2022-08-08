@@ -6,19 +6,24 @@
         <nuxt-link to="/">MLMAC</nuxt-link>
       </v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        v-for="link in links"
-        :key="link.name"
-        text
-        nuxt
-        :to="link.route"
-        >{{ link.name }}</v-btn
-      >
+      <v-btn v-for="link in links" :key="link.name" text nuxt :to="link.route">
+        {{ link.name }}
+      </v-btn>
+      <div v-if="isUserAuthenticated">
+        <v-btn
+          v-for="link in authLinks"
+          :key="link.name"
+          text
+          nuxt
+          :to="link.route">
+          {{ link.name }}
+        </v-btn>
+      </div>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app bottom clipped>
       <template #prepend>
-        <v-list-item v-if="!$store.state.isUserAuthenticated">
+        <v-list-item v-if="!isUserAuthenticated">
           <v-list-item-content>
             <v-btn @click="login">
               <v-icon left> mdi-github </v-icon>
@@ -75,6 +80,18 @@
             </v-list-item-content>
           </v-list-item>
         </div>
+
+        <div v-if="isUserAuthenticated">
+          <v-list-item
+            v-for="link in authLinks"
+            :key="link.route"
+            nuxt
+            :to="link.route">
+            <v-list-item-content>
+              <v-list-item-title>{{ link.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
       </v-list>
 
       <template #append>
@@ -94,6 +111,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   data() {
@@ -110,11 +128,6 @@ export default Vue.extend({
           items: []
         }
         // {
-        //   name: 'Submission',
-        //   route: '/submit',
-        //   items: []
-        // },
-        // {
         //   name: 'Results',
         //   route: '/results',
         //   items: []
@@ -124,6 +137,13 @@ export default Vue.extend({
         //   route: '/#organizers',
         //   items: []
         // }
+      ],
+      authLinks: [
+        {
+          name: 'Submit Answers',
+          route: '/submit',
+          items: []
+        }
       ],
       drawer: false,
       details: {}
@@ -135,6 +155,9 @@ export default Vue.extend({
       .fetch()
     // Details
     this.links[1].items = toc
+  },
+  computed: {
+    ...mapGetters(['isUserAuthenticated'])
   },
   methods: {
     login() {
