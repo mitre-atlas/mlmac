@@ -16,15 +16,23 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 
 export default Vue.extend({
   data() {
     return {
       title: 'Logged In',
-      lastUpdated: `Last updated at ${new Date().toLocaleString()}`
+      cookieName: 'mlmac-token'
     }
+  },
+  mounted() {
+    this.$store
+      .dispatch('login', this.$route.query.user)
+      .then(() => console.log('loggedin - successful'))
+      .catch(() => {
+        window.location.href = 'https://api.mlmac.io:8080/github/auth'
+      })
   }
 })
 </script>

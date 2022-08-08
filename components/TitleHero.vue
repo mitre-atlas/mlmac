@@ -12,8 +12,13 @@
     <v-row align="center" justify="center">
       <CountdownTimer></CountdownTimer>
     </v-row>
-    <v-row align="center" justify="center">
-      <v-btn rounded x-large color="primary">Register</v-btn>
+    <v-row
+      v-if="!$store.state.isUserAuthenticated"
+      align="center"
+      justify="center">
+      <v-btn rounded x-large color="primary" click="$store.dispatch('login')"
+        >Login</v-btn
+      >
     </v-row>
   </v-container>
 </template>

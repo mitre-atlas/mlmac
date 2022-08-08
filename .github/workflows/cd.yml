@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - api-docs
+      - register
   pull_request:
 
 jobs:

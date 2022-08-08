@@ -20,7 +20,9 @@
       <template #prepend>
         <v-list-item>
           <v-list-item-content>
-            <v-btn><v-icon left> mdi-github </v-icon>Login</v-btn>
+            <v-btn @click="$store.dispatch('login')"
+              ><v-icon left> mdi-github </v-icon>Login</v-btn
+            >
           </v-list-item-content>
         </v-list-item>
         <v-list-item two-line>
