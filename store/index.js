@@ -26,6 +26,16 @@ export const mutations = {
     state.githubUsername = info.login
     state.githubAvatarUrl = info.avatar_url
   },
+  logout(state) {
+    state.isUserAuthenticated = false
+    state.userToken = ''
+    state.name = ''
+    state.created = ''
+    state.total_queries = -1
+    state.queries = -1
+    state.githubUsername = ''
+    state.githubAvatarUrl = ''
+  },
 }
 
 export const getters = {
@@ -78,5 +88,10 @@ export const actions = {
   async getGitHubInfo({ commit }) {
     const info = await this.$http.$get('https://api.mlmac.io:8080/github_info')
     commit('setGitHubInfo', info)
+  },
+  async logout({ commit }) {
+    const logout = await this.$http.$get('https://api.mlmac.io:8080/logout')
+    console.log('logout', logout)
+    commit('logout')
   },
 }

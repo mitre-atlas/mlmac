@@ -42,7 +42,10 @@
               >
             </v-list-item>
             <v-divider></v-divider>
-            <v-btn v-if="isUserAuthenticated" block nuxt to="/logout">
+            <v-btn
+              v-if="isUserAuthenticated"
+              block
+              @click="$store.dispatch('logout')">
               Logout
             </v-btn>
           </v-list>
@@ -134,7 +137,10 @@
           <v-list-item nuxt to="/terms">
             <v-list-item-title>Terms of Service</v-list-item-title>
           </v-list-item>
-          <v-btn v-if="isUserAuthenticated" block nuxt to="/logout">
+          <v-btn
+            v-if="isUserAuthenticated"
+            block
+            @click="$store.dispatch('logout')">
             Logout
           </v-btn>
         </v-list>
