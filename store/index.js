@@ -65,7 +65,7 @@ export const actions = {
       } else if (typeof token !== 'undefined') {
         // From logged in - save the cookie
         console.log('store - token provided, sat as cookie', token)
-        this.$cookies.set(COOKIE_NAME, token)
+        this.$cookies.set(COOKIE_NAME, token, { sameSite: true })
       } else {
         console.log('store - no cookie found and no token provided, redirect')
         reject(new Error('User needs to authenticate'))
