@@ -67,7 +67,7 @@ export default {
     }
   },
   mounted() {
-    // this.$store.dispatch('updateStatus')
+    this.$store.dispatch('updateStatus')
   },
   computed: {
     ...mapGetters(['apiKey', 'githubInfo', 'queries', 'totalQueries']),

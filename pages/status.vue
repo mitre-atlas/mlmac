@@ -5,17 +5,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'StatusPage',
+  middleware: 'auth',
   data() {
     return {}
   },
   computed: {},
-  mounted() {
-    // this.$store.dispatch('updateStatus')
-  },
   methods: {}
 }
 </script>
