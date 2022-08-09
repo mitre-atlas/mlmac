@@ -38,15 +38,18 @@ export const mutations = {
     state.isUserAuthenticated = true
   },
   setStatus(state, status) {
+    console.log('setStatus before', status)
     state.name = status.name
     state.created = new Date(status.created)
     state.total_queries = status.total_queries
     // state.queries = status.queries
     state.queries = { ...state.queries, ...status.queries }
+    console.log('setStatus after - queries', state.queries)
   },
   setGitHubInfo(state, info) {
     state.githubUsername = info.login
     state.githubAvatarUrl = info.avatar_url
+    console.log('setGitHubInfo', info)
   },
   logout(state) {
     state.isUserAuthenticated = false

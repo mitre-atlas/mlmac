@@ -34,7 +34,12 @@ export default Vue.extend({
     )
     this.$store
       .dispatch('login', this.$route.query.user)
-      .then(() => {
+      .then((m) => {
+        console.log(
+          'Loggedin mounted, successful login with message',
+          m,
+          'dispatching getGitHubInfo and updateStatus'
+        )
         this.$store.dispatch('getGitHubInfo')
         this.$store.dispatch('updateStatus')
       })
