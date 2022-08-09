@@ -14,7 +14,9 @@ export default {
   data() {
     return {
       title: 'Results',
-      lastUpdated: `Last updated at ${new Date().toLocaleString()}`
+      lastUpdated: `Last updated at ${new Date(
+        '2022-08-12T00:00:00Z'
+      ).toLocaleString()}`
     }
   }
 }
