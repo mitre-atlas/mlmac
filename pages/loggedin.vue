@@ -1,17 +1,30 @@
 <template>
   <div>
-    <div class="text-h5 ma-10 text-center">
-      You are now registered with the MLMAC API.
+    <div v-if="isApiKeyValid">
+      <div class="text-h5 ma-10 text-center">
+        You are now logged in with the MLMAC API.
+      </div>
+      <div class="text-h5 ma-10 text-center">
+        Take note of your API token:
+        <span class="font-weight-bold purple--text text--lighten-2">{{
+          $route.query.user
+        }}</span>
+      </div>
+      <div class="text-h5 ma-10 text-center">
+        Visit the <nuxt-link to="/api">API docs</nuxt-link>, see your
+        <nuxt-link to="/status">query stats</nuxt-link>, and questions can be
+        posted to <a href="https://mitreatlas.slack.com">Slack</a>.
+      </div>
     </div>
-    <div class="text-h5 ma-10 text-center">
-      Take note of your API token:
-      <span class="font-weight-bold purple--text text--lighten-2">{{
-        $route.query.user
-      }}</span>
-    </div>
-    <div class="text-h5 ma-10 text-center">
-      Visit the <nuxt-link to="/api">API docs</nuxt-link> and questions can be
-      posted to <a href="https://mitreatlas.slack.com">Slack</a>.
+    <div v-else>
+      <v-alert text prominent type="warning">
+        API key
+        <span class="font-weight-bold purple--text text--lighten-2">
+          {{ $route.query.user }}</span
+        >
+        is not recognized - please reach out to MLMAC administrators on
+        <a href="https://mitreatlas.slack.com">Slack</a>.
+      </v-alert>
     </div>
   </div>
 </template>
@@ -24,28 +37,43 @@ export default Vue.extend({
   data() {
     return {
       title: 'Logged In',
-      cookieName: 'mlmac-token'
+      cookieName: 'mlmac-token',
+      isApiKeyValid: false
     }
   },
   mounted() {
-    console.log(
-      'Loggedin mounted, dispatching login with ',
-      this.$route.query.user
-    )
-    this.$store
-      .dispatch('login', this.$route.query.user)
-      .then((m) => {
-        console.log(
-          'Loggedin mounted, successful login with message',
-          m,
-          'dispatching getGitHubInfo and updateStatus'
-        )
-        this.$store.dispatch('getGitHubInfo')
-        this.$store.dispatch('updateStatus')
+    // Check if this API key is valid
+    this.$http
+      .get('https://api.mlmac.io:8080/status')
+      .then((resp) => {
+        if (resp.status === 200) {
+          // Pass
+          this.isApiKeyValid = true
+          this.login(this.$route.query.user)
+        }
       })
-      .catch(() => {
-        window.location.href = 'https://api.mlmac.io:8080/github/auth'
+      .catch((e) => {
+        // Unauthorized
       })
+  },
+  methods: {
+    login(token) {
+      console.log('Loggedin mounted, dispatching login with ', token)
+      this.$store
+        .dispatch('login', this.$route.query.user)
+        .then((m) => {
+          console.log(
+            'Loggedin mounted, successful login with message',
+            m,
+            'dispatching getGitHubInfo and updateStatus'
+          )
+          this.$store.dispatch('getGitHubInfo')
+          this.$store.dispatch('updateStatus')
+        })
+        .catch(() => {
+          window.location.href = 'https://api.mlmac.io:8080/github/auth'
+        })
+    }
   }
 })
 </script>
