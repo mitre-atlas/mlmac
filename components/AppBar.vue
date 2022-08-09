@@ -10,12 +10,12 @@
       <v-spacer></v-spacer>
 
       <!-- Default buttons -->
-      <v-btn v-for="link in links" :key="link.name" text nuxt :to="link.route">
+      <!-- <v-btn v-for="link in links" :key="link.name" text nuxt :to="link.route">
         {{ link.name }}
-      </v-btn>
+      </v-btn> -->
 
       <!-- Buttons once logged in -->
-      <div v-show="isUserAuthenticated">
+      <div v-if="isUserAuthenticated">
         <v-btn
           v-for="link in authLinks"
           :key="link.name"
@@ -55,12 +55,16 @@
           </v-list>
         </v-menu>
       </div>
+      <v-btn v-else color="primary" @click="login">
+        <v-icon left> mdi-github </v-icon>
+        Login
+      </v-btn>
     </v-app-bar>
 
     <!-- Side navigation drawer -->
     <v-navigation-drawer v-model="drawer" app bottom clipped>
       <!-- User details -->
-      <template #prepend>
+      <!-- <template #prepend>
         <v-list-item v-if="!isUserAuthenticated">
           <v-list-item-content>
             <v-btn @click="login">
@@ -71,14 +75,11 @@
         </v-list-item>
         <v-list-item v-else two-line>
           <v-list-item-avatar>
-            <!-- <v-icon dark> mdi-account-circle </v-icon> -->
             <v-img dark :src="githubInfo.avatarUrl"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title> {{ githubInfo.username }}</v-list-item-title>
-            <!-- <v-list-item-subtitle
-              >{{ totalQueries }} total queries</v-list-item-subtitle
-            > -->
+
             <span>
               <span class="text-body-1">API Key:</span>
               <code>{{ apiKey }}</code>
@@ -88,7 +89,7 @@
         </v-list-item>
       </template>
 
-      <v-divider></v-divider>
+      <v-divider></v-divider> -->
 
       <v-list nav>
         <!-- Default links, including details headers -->
@@ -124,6 +125,8 @@
 
         <!-- Links after login -->
         <div v-show="isUserAuthenticated">
+          <v-divider></v-divider>
+
           <v-list-item
             v-for="link in authLinks"
             :key="link.route"
@@ -146,12 +149,12 @@
           <v-list-item nuxt to="/terms">
             <v-list-item-title>Terms of Service</v-list-item-title>
           </v-list-item>
-          <v-btn
+          <!-- <v-btn
             v-show="isUserAuthenticated"
             block
             @click="$store.dispatch('logout')">
             Logout
-          </v-btn>
+          </v-btn> -->
         </v-list>
       </template>
     </v-navigation-drawer>

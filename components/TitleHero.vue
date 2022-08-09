@@ -12,12 +12,6 @@
     <v-row align="center" justify="center">
       <CountdownTimer></CountdownTimer>
     </v-row>
-    <v-row v-if="!isUserAuthenticated" align="center" justify="center">
-      <v-btn rounded x-large color="primary" @click="login">
-        <v-icon left> mdi-github </v-icon>
-        Login
-      </v-btn>
-    </v-row>
   </v-container>
 </template>
 
@@ -30,22 +24,6 @@ export default Vue.extend({
     return {
       title: 'Machine Learning Model Attribution Challenge',
       subtitle: ''
-    }
-  },
-  computed: {
-    ...mapGetters(['isUserAuthenticated'])
-  },
-  methods: {
-    login() {
-      this.$store
-        .dispatch('login')
-        .then(() => {
-          this.$store.dispatch('getGitHubInfo')
-          this.$store.dispatch('updateStatus')
-        })
-        .catch(() => {
-          window.location.href = 'https://api.mlmac.io:8080/github/auth'
-        })
     }
   }
 })
