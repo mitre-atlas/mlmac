@@ -8,11 +8,7 @@
 
       <v-spacer></v-spacer>
 
-      <span>
-        <span class="text-body-1">API Key:</span>
-        <code>{{ apiKey }}</code>
-        <v-icon right @click="copyText"> mdi-content-copy </v-icon>
-      </span>
+      <ApiKey></ApiKey>
     </v-card-title>
 
     <v-card-text class="text-center">
@@ -78,7 +74,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['apiKey', 'githubInfo', 'queries', 'totalQueries']),
+    ...mapGetters(['githubInfo', 'queries', 'totalQueries']),
     value() {
       const arr = Array(this.numModels).fill(0)
       for (const [key, value] of Object.entries(this.queries)) {
@@ -97,9 +93,6 @@ export default {
     refresh() {
       this.$store.dispatch('updateStatus')
       this.lastUpdatedDate = new Date().toLocaleString()
-    },
-    copyText() {
-      navigator.clipboard.writeText(this.apiKey)
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
     <SectionHeader>Submission</SectionHeader>
+    <div class="text-center"><ApiKey></ApiKey></div>
     <v-sheet class="mx-auto" flat>
       <iframe
         id="cont"
@@ -9,8 +10,7 @@
         height="2000"
         frameborder="0"
         marginheight="0"
-        marginwidth="0"
-        @load="formsLoaded">
+        marginwidth="0">
         Loading…
       </iframe>
     </v-sheet>
@@ -20,15 +20,7 @@
 <script>
 export default {
   name: 'SubmitPage',
-  middleware: 'auth',
-  methods: {
-    formsLoaded() {
-      this.$nextTick(() => {
-        const tokenInput = document.querySelector('input[type=text]')
-        tokenInput.value = this.$store.state.userToken
-      })
-    }
-  }
+  middleware: 'auth'
 }
 </script>
 
