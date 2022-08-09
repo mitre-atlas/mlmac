@@ -38,8 +38,9 @@ export const mutations = {
       state.userToken = token
       state.isUserAuthenticated = true
       console.log('setUserToken to', token)
+    } else {
+      console.log('undefined setUserToken')
     }
-    console.log('undefined setUserToken')
   },
   setStatus(state, status) {
     console.log('setStatus status', status)
