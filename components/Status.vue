@@ -1,19 +1,13 @@
 <template>
   <v-card>
-    <v-card-title>
+    <!-- <v-card-title>
       <v-avatar size="36">
-        <v-img left dark :src="githubInfo.avatarUrl"></v-img>
+        <v-img dark :src="githubInfo.avatarUrl"></v-img>
       </v-avatar>
       <span class="text-h6">{{ githubInfo.username }}</span>
 
       <v-spacer></v-spacer>
-
-      <span>
-        <span class="text-body-1">API Key:</span>
-        <code>{{ apiKey }}</code>
-      </span>
-      <v-icon right @click="copyText"> mdi-content-copy </v-icon>
-    </v-card-title>
+    </v-card-title> -->
 
     <v-card-text class="text-center">
       <div class="text-h4 font-weight-thin">
@@ -67,7 +61,7 @@ export default {
   name: 'Status',
   data() {
     return {
-      numModels: 11,
+      numModels: 12,
       show: false,
       lastUpdatedDate: new Date().toLocaleString()
     }

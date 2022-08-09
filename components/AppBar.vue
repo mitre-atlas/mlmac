@@ -41,6 +41,15 @@
                 >Logged in as {{ githubInfo.username }}</v-list-item-title
               >
             </v-list-item>
+            <v-list-item>
+              <v-list-item-content>
+                <span>
+                  <span class="text-body-1">API Key:</span>
+                  <code>{{ apiKey }}</code>
+                </span>
+                <v-icon right @click="copyText"> mdi-content-copy </v-icon>
+              </v-list-item-content>
+            </v-list-item>
             <v-divider></v-divider>
             <v-btn block @click="$store.dispatch('logout')"> Logout </v-btn>
           </v-list>
@@ -70,6 +79,11 @@
             <!-- <v-list-item-subtitle
               >{{ totalQueries }} total queries</v-list-item-subtitle
             > -->
+            <span>
+              <span class="text-body-1">API Key:</span>
+              <code>{{ apiKey }}</code>
+            </span>
+            <v-icon right @click="copyText"> mdi-content-copy </v-icon>
           </v-list-item-content>
         </v-list-item>
       </template>

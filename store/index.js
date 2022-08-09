@@ -2,25 +2,13 @@ const COOKIE_NAME = 'mlmac-token'
 
 export const state = () => ({
   isUserAuthenticated: false,
-  // userToken: '',
-  // name: '',
-  // created: '',
-  // total_queries: -1,
-  // queries: {},
-  // githubUsername: '',
-  // githubAvatarUrl: ''
-  userToken: 'ABC123',
-  name: 'HelloWorld',
+  userToken: '',
+  name: '',
   created: '',
-  total_queries: 5678,
-  queries: {
-    0: 9,
-    3: 5,
-    4: 8,
-    6: 1
-  },
-  githubUsername: 'HelloWorld',
-  githubAvatarUrl: 'https://cdn.vuetifyjs.com/images/john.jpg'
+  total_queries: -1,
+  queries: {},
+  githubUsername: '',
+  githubAvatarUrl: ''
 })
 
 export const getters = {
@@ -65,8 +53,8 @@ export const mutations = {
     state.userToken = ''
     state.name = ''
     state.created = ''
-    state.total_queries = {}
-    state.queries = -1
+    state.total_queries = -1
+    state.queries = {}
     state.githubUsername = ''
     state.githubAvatarUrl = ''
   }
