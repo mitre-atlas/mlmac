@@ -47,18 +47,22 @@ export default Vue.extend({
   },
   mounted() {
     // Check if this API key is valid
-    this.$http
-      .get('https://api.mlmac.io:8080/status')
-      .then((resp) => {
-        if (resp.status === 200) {
-          // Pass
-          this.isApiKeyValid = true
-          this.login(this.$route.query.user)
-        }
-      })
-      .catch((e) => {
-        // Unauthorized
-      })
+    const token = this.$route.query.user
+    if (token) {
+      this.$http.setToken(token, 'Bearer')
+      this.$http
+        .get('https://api.mlmac.io:8080/status')
+        .then((resp) => {
+          if (resp.status === 200) {
+            // Pass
+            this.isApiKeyValid = true
+            this.login(token)
+          }
+        })
+        .catch((e) => {
+          // Unauthorized
+        })
+    }
   },
   methods: {
     login(token) {
