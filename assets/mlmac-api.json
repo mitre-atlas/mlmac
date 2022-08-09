@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Machine Learning Model Attribution Challenge API\n\nIn development, the below subject to change.\n",
+    "description": "Machine Learning Model Attribution Challenge API\n",
     "version": "1.0.0",
     "title": "MLMAC",
     "termsOfService": "https://mlmac.io/terms/",
@@ -64,6 +64,9 @@
           "401": {
             "description": "Unauthorized, missing Authorization Bearer token in request header"
           },
+          "429": {
+            "description": "Too many requests"
+          },
           "500": {
             "description": "Internal server error"
           },
@@ -72,23 +75,6 @@
             "schema": {
               "$ref": "#/definitions/ModelOutputError"
             }
-          }
-        }
-      }
-    },
-    "/github_info": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "My GitHub info",
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "Authenticated GitHub user data - https://docs.github.com/en/rest/users/users#get-the-authenticated-user"
-          },
-          "401": {
-            "description": "Unauthorized, missing Authorization Bearer token in request header"
           }
         }
       }
