@@ -30,6 +30,33 @@
           {{ link.name }}
         </v-btn>
 
+        <!-- Help dialog -->
+        <v-dialog v-model="dialog" width="500">
+          <template #activator="{ on, attrs }">
+            <v-btn icon dark v-bind="attrs" v-on="on">
+              <v-icon dark> mdi-help-circle-outline </v-icon>
+            </v-btn>
+          </template>
+
+          <v-card>
+            <v-card-title class="text-h5"> Questions? </v-card-title>
+
+            <v-card-text>
+              Join the
+              <a
+                class="blue--text"
+                href="https://join.slack.com/t/mitreatlas/shared_invite/zt-1c84p6wkh-ghNhhnPIFML8e33LcSA18g"
+                >#mlmac channel at mitreatlas.slack.com</a
+              >
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" text @click="dialog = false"> OK </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
         <v-menu bottom offset-y>
           <template #activator="{ on, attrs }">
             <v-btn dark text large v-bind="attrs" v-on="on">
@@ -221,7 +248,8 @@ export default Vue.extend({
         // }
       ],
       drawer: false,
-      details: {}
+      details: {},
+      dialog: false
     }
   },
   async fetch(): Promise<any> {
