@@ -161,12 +161,17 @@ export default Vue.extend({
           name: 'Competition Details',
           route: '/#details',
           items: []
+        },
+        {
+          name: 'API Docs',
+          route: '/api',
+          items: []
+        },
+        {
+          name: 'Results',
+          route: '/results',
+          items: []
         }
-        // {
-        //   name: 'Results',
-        //   route: '/results',
-        //   items: []
-        // },
         // {
         //   name: 'Organizers',
         //   route: '/#organizers',
@@ -174,11 +179,6 @@ export default Vue.extend({
         // }
       ],
       authLinks: [
-        {
-          name: 'API Docs',
-          route: '/api',
-          items: []
-        },
         {
           name: 'Submit Answers',
           route: '/submit',
