@@ -22,8 +22,12 @@
         <span class="font-weight-bold purple--text text--lighten-2">
           {{ $route.query.user }}</span
         >
-        is not recognized - please reach out to MLMAC administrators on
-        <a href="https://mitreatlas.slack.com">Slack</a>.
+        is not recognized - please reach out to MLMAC administrators on the
+        <a
+          class="blue--text"
+          href="https://join.slack.com/t/mitreatlas/shared_invite/zt-1c84p6wkh-ghNhhnPIFML8e33LcSA18g"
+          >#mlmac channel at mitreatlas.slack.com</a
+        >
       </v-alert>
     </div>
   </div>
