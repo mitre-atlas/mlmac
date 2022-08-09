@@ -10,9 +10,14 @@
       <v-spacer></v-spacer>
 
       <!-- Default buttons -->
-      <!-- <v-btn v-for="link in links" :key="link.name" text nuxt :to="link.route">
+      <v-btn
+        v-for="link in barLinks"
+        :key="link.name"
+        text
+        nuxt
+        :to="link.route">
         {{ link.name }}
-      </v-btn> -->
+      </v-btn>
 
       <!-- Buttons once logged in -->
       <div v-show="isUserAuthenticated">
@@ -41,17 +46,16 @@
                 >Logged in as {{ githubInfo.username }}</v-list-item-title
               >
             </v-list-item>
-            <v-list-item>
-              <v-list-item-content>
-                <span>
-                  <span class="text-body-1">API Key:</span>
-                  <code>{{ apiKey }}</code>
-                  <v-icon right @click="copyText"> mdi-content-copy </v-icon>
-                </span>
-              </v-list-item-content>
+            <v-list-item nuxt to="/status">
+              <v-list-item-title> View my stats </v-list-item-title>
+            </v-list-item>
+            <v-list-item nuxt to="/submit">
+              <v-list-item-title> Submit answers </v-list-item-title>
             </v-list-item>
             <v-divider></v-divider>
-            <v-btn block @click="$store.dispatch('logout')"> Logout </v-btn>
+            <v-btn color="error" @click="$store.dispatch('logout')">
+              Logout
+            </v-btn>
           </v-list>
         </v-menu>
       </div>
@@ -123,7 +127,22 @@
           </v-list-item>
         </div>
 
-        <!-- Links after login -->
+        <!-- Links that are also in the bar -->
+        <div>
+          <v-divider></v-divider>
+
+          <v-list-item
+            v-for="link in barLinks"
+            :key="link.route"
+            nuxt
+            :to="link.route">
+            <v-list-item-content>
+              <v-list-item-title>{{ link.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
+
+        <!-- Links after login, also in bar menu -->
         <div v-show="isUserAuthenticated">
           <v-divider></v-divider>
 
@@ -178,7 +197,9 @@ export default Vue.extend({
           name: 'Competition Details',
           route: '/#details',
           items: []
-        },
+        }
+      ],
+      barLinks: [
         {
           name: 'API Docs',
           route: '/api',
@@ -189,11 +210,6 @@ export default Vue.extend({
           route: '/results',
           items: []
         }
-        // {
-        //   name: 'Organizers',
-        //   route: '/#organizers',
-        //   items: []
-        // }
       ],
       authLinks: [
         {

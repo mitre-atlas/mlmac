@@ -1,13 +1,19 @@
 <template>
   <v-card>
-    <!-- <v-card-title>
-      <v-avatar size="36">
+    <v-card-title>
+      <!-- <v-avatar size="36">
         <v-img dark :src="githubInfo.avatarUrl"></v-img>
-      </v-avatar>
+      </v-avatar> -->
       <span class="text-h6">{{ githubInfo.username }}</span>
 
       <v-spacer></v-spacer>
-    </v-card-title> -->
+
+      <span>
+        <span class="text-body-1">API Key:</span>
+        <code>{{ apiKey }}</code>
+        <v-icon right @click="copyText"> mdi-content-copy </v-icon>
+      </span>
+    </v-card-title>
 
     <v-card-text class="text-center">
       <div class="text-h4 font-weight-thin">
