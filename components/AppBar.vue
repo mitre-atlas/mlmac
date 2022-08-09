@@ -41,21 +41,18 @@
           </template>
 
           <v-list>
-            <v-list-item>
-              <v-list-item-title
-                >Logged in as {{ githubInfo.username }}</v-list-item-title
-              >
-            </v-list-item>
             <v-list-item nuxt to="/status">
-              <v-list-item-title> View my stats </v-list-item-title>
+              <v-list-item-title>
+                {{ githubInfo.username }}'s stats
+              </v-list-item-title>
             </v-list-item>
-            <v-list-item nuxt to="/submit">
+            <!-- <v-list-item nuxt to="/submit">
               <v-list-item-title> Submit answers </v-list-item-title>
-            </v-list-item>
+            </v-list-item> -->
             <v-divider></v-divider>
-            <v-btn color="error" nuxt to="/" @click="$store.dispatch('logout')">
-              Logout
-            </v-btn>
+            <v-list-item nuxt to="/" @click="$store.dispatch('logout')">
+              <v-list-item-title> Logout</v-list-item-title>
+            </v-list-item>
           </v-list>
         </v-menu>
       </div>
@@ -216,12 +213,12 @@ export default Vue.extend({
           name: 'Submit Answers',
           route: '/submit',
           items: []
-        },
-        {
-          name: 'View Query Stats',
-          route: '/status',
-          items: []
         }
+        // {
+        //   name: 'View Query Stats',
+        //   route: '/status',
+        //   items: []
+        // }
       ],
       drawer: false,
       details: {}
