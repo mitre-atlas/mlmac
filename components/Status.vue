@@ -67,7 +67,9 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('updateStatus')
+    if (this.$store.state.isUserAuthenticated) {
+      this.$store.dispatch('updateStatus')
+    }
   },
   computed: {
     ...mapGetters(['apiKey', 'githubInfo', 'queries', 'totalQueries']),
