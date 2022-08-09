@@ -28,6 +28,10 @@ export default Vue.extend({
     }
   },
   mounted() {
+    console.log(
+      'Loggedin mounted, dispatching login with ',
+      this.$route.query.user
+    )
     this.$store
       .dispatch('login', this.$route.query.user)
       .then(() => {
