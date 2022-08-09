@@ -37,26 +37,18 @@ export const mutations = {
     if (typeof token !== 'undefined') {
       state.userToken = token
       state.isUserAuthenticated = true
-      console.log('setUserToken to', token)
-    } else {
-      console.log('undefined setUserToken')
     }
   },
   setStatus(state, status) {
-    console.log('setStatus status', status)
-    console.log('setStatus before state', state)
-
     state.name = status.name
     state.created = new Date(status.created)
     state.total_queries = status.total_queries
     // state.queries = status.queries
     state.queries = { ...state.queries, ...status.queries }
-    console.log('setStatus after state', state)
   },
   setGitHubInfo(state, info) {
     state.githubUsername = info.login
     state.githubAvatarUrl = info.avatar_url
-    console.log('setGitHubInfo', info)
   },
   logout(state) {
     state.isUserAuthenticated = false
@@ -77,25 +69,22 @@ export const actions = {
 
       // Retrieve the user token from either the cookie, or from loggedin
       if (savedToken) {
-        console.log('store - token restored from cookie')
         token = savedToken
       } else if (typeof token !== 'undefined') {
         // From logged in - save the cookie
-        console.log('store - token provided, set as cookie', token)
+
         this.$cookies.set(COOKIE_NAME, token, { sameSite: true })
       } else {
-        console.log('store - no cookie found and no token provided, redirect')
         reject(new Error('User needs to authenticate'))
       }
 
       if (token) {
         // Save the token and change auth status
-        console.log('store --about to setUserToken with ', token)
+
         commit('setUserToken', token)
 
         // Set request headers
         this.$http.setToken(token, 'Bearer')
-        console.log('store - $http set token to', token)
       }
 
       resolve('Logged in')
