@@ -42,7 +42,7 @@ export const mutations = {
     state.created = new Date(status.created)
     state.total_queries = status.total_queries
     // state.queries = status.queries
-    state.queries = { ...state.queries, ...status }
+    state.queries = { ...state.queries, ...status.queries }
   },
   setGitHubInfo(state, info) {
     state.githubUsername = info.login

@@ -46,8 +46,8 @@
                 <span>
                   <span class="text-body-1">API Key:</span>
                   <code>{{ apiKey }}</code>
+                  <v-icon right @click="copyText"> mdi-content-copy </v-icon>
                 </span>
-                <v-icon right @click="copyText"> mdi-content-copy </v-icon>
               </v-list-item-content>
             </v-list-item>
             <v-divider></v-divider>
