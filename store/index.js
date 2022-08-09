@@ -36,6 +36,7 @@ export const mutations = {
   setUserToken(state, token) {
     state.userToken = token
     state.isUserAuthenticated = true
+    console.log('setUserToken to', token)
   },
   setStatus(state, status) {
     console.log('setStatus status', status)
@@ -76,7 +77,7 @@ export const actions = {
         token = savedToken
       } else if (typeof token !== 'undefined') {
         // From logged in - save the cookie
-        console.log('store - token provided, sat as cookie', token)
+        console.log('store - token provided, set as cookie', token)
         this.$cookies.set(COOKIE_NAME, token, { sameSite: true })
       } else {
         console.log('store - no cookie found and no token provided, redirect')
@@ -88,6 +89,7 @@ export const actions = {
 
       // Set request headers
       this.$http.setToken(token, 'Bearer')
+      console.log('store - $http set token to', token)
 
       resolve('Logged in')
     })
