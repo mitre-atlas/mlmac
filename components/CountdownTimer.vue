@@ -27,11 +27,14 @@ export default Vue.extend({
       },
       start: new Date('2022-08-12T00:00:00Z'),
       end: new Date('2022-09-16T00:00:00Z'),
-      diff: new Date(),
+      now: Date.now(),
       interval: -1
     }
   },
   computed: {
+    diff(): Date {
+      return new Date(this.start.getTime() - this.now)
+    },
     countdown(): object[] {
       return [
         {
@@ -62,7 +65,7 @@ export default Vue.extend({
   methods: {
     setTimerInterval() {
       this.interval = window.setInterval(() => {
-        this.diff = new Date(this.start.getTime() - Date.now())
+        this.now = Date.now()
       }, 1000)
     }
   }
