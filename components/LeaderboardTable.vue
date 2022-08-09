@@ -3,66 +3,47 @@
     dark
     :headers="headers"
     :items="items"
-    show-expand
     item-key="name"
-    :search="search"
-  >
-    <!--
+    :search="search">
     <template #top>
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
-        label="Search by name"
+        label="Search by username"
         single-line
-        hide-details
-      ></v-text-field>
+        hide-details></v-text-field>
     </template>
-    -->
     <template #item.rank="{ item }">
       {{ item.rank }}
-      <span v-if="item.rank === 1">
+      <!-- <span v-if="item.rank === 1">
         <v-icon right small> mdi-crown </v-icon>
-      </span>
+      </span> -->
     </template>
-    <template #item.lastSubmission="{ item }">
-      {{
-        item.lastSubmission.toLocaleString(undefined, {
+    <template #item.last_submission_date="{ item }">
+      <!-- {{
+        item.last_submission_date.toLocaleString(undefined, {
           dateStyle: 'short',
-          timeStyle: 'short'
+          timeStyle: 'long'
         })
-      }}
+      }} -->
+      {{ item.last_submission_date.toUTCString() }}
+    </template>
+    <template #item.total_queries="{ item }">
+      {{ Number(item.total_queries).toLocaleString('en-US') }}
     </template>
     <template #item.score="{ item }">
-      {{ item.numCorrect }} / {{ numModels }}
-    </template>
-    <template #expanded-item="{ headers, item }">
-      <td :colspan="headers.length">
-        <v-sparkline
-          auto-draw
-          smooth
-          :value="item.sparklineValues"
-          width="500"
-          :color="item.color"
-        ></v-sparkline>
-      </td>
+      {{ item.num_correct }} / {{ numModels }}
     </template>
   </v-data-table>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
+import resultsData from '../assets/results.json'
 
 export default Vue.extend({
   data() {
     return {
-      names: [
-        'Purple Parrots',
-        'Blue Barracudas',
-        'Orange Iguanas',
-        'Red Jaguars',
-        'Silver Snakes',
-        'Green Monkeys'
-      ],
       headers: [
         {
           text: 'Rank',
@@ -70,8 +51,8 @@ export default Vue.extend({
           filterable: false
         },
         {
-          text: 'Name',
-          value: 'name'
+          text: 'Username',
+          value: 'username'
         },
         {
           text: 'Score',
@@ -80,73 +61,57 @@ export default Vue.extend({
         },
         {
           text: 'Queries',
-          value: 'queries',
+          value: 'total_queries',
           filterable: false
         },
         {
-          text: 'Last submission',
-          value: 'lastSubmission',
-          filterable: false
-        },
-        {
-          text: 'Show queries',
-          value: 'data-table-expand',
+          text: 'Last submission time',
+          value: 'last_submission_date',
           filterable: false
         }
+        // {
+        //   text: 'Show queries',
+        //   value: 'data-table-expand',
+        //   filterable: false
+        // }
       ],
       numModels: 12,
       end: Date.now(),
       start: new Date().setDate(0),
-      search: ''
+      search: '',
+      results: resultsData.map((r) => {
+        r.last_submission_date = new Date(r.last_submission_date)
+        return r
+      })
     }
   },
   computed: {
-    numItems(): number {
-      return this.names.length
-    },
-    randomScores(): number[] {
-      const scores = Array.from({ length: this.numItems }, () =>
-        Math.floor(Math.random() * 100)
-      )
-      return scores.sort().reverse()
-    },
-    items(): Array<object> {
-      const teams = this.names.map((name) => ({
-        name,
-        lastSubmission: new Date(
-          this.start + Math.random() * (this.end - this.start)
-        ),
-        numCorrect: Math.floor(Math.random() * this.numModels),
-        queries: Math.floor(Math.random() * 100),
-        rank: 0,
-        sparklineValues: Array.from({ length: 10 }, () =>
-          Math.floor(Math.random() * 100)
-        ),
-        color: name.split(' ')[0].toLowerCase()
-      }))
-
+    items() {
       // Reverse score order
-      teams.sort((a, b) => {
+      this.results.sort((a, b) => {
         // num correct, then queries, then date
-        if (a.numCorrect > b.numCorrect) {
+        if (a.num_correct > b.num_correct) {
           // Higher number of correct is better
           return -1
-        } else if (a.numCorrect === b.numCorrect) {
+        } else if (a.num_correct === b.num_correct) {
           // If the number of correct is the smae
-          if (a.queries < b.queries) {
+          if (a.total_queries < b.total_queries) {
             // Lower number of queries is better
             return -1
-          } else if (a.queries === b.queries) {
+          } else if (a.total_queries === b.total_queries) {
             // If the number of queries is the same, compare the last submission times
             // Earlier last submission time is better
-            return a.lastSubmission.getTime() - b.lastSubmission.getTime()
+            return (
+              a.last_submission_date.getTime() -
+              b.last_submission_date.getTime()
+            )
           }
         }
         // Otherwise rank b second
         return 1
       })
 
-      return teams.map((t, i) => {
+      return this.results.map((t, i) => {
         t.rank = i + 1
         return t
       })

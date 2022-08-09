@@ -5,6 +5,9 @@
 <script>
 export default {
   name: 'ResultsPage',
-  middleware: 'auth'
+  // middleware: 'auth',
+  data() {
+    return {}
+  }
 }
 </script>
