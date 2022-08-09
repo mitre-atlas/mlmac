@@ -53,7 +53,7 @@
               <v-list-item-title> Submit answers </v-list-item-title>
             </v-list-item>
             <v-divider></v-divider>
-            <v-btn color="error" @click="$store.dispatch('logout')">
+            <v-btn color="error" nuxt to="/" @click="$store.dispatch('logout')">
               Logout
             </v-btn>
           </v-list>
