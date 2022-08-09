@@ -88,13 +88,15 @@ export const actions = {
         reject(new Error('User needs to authenticate'))
       }
 
-      // Save the token and change auth status
-      console.log('store --about to setUserToken with ', token)
-      commit('setUserToken', token)
+      if (token) {
+        // Save the token and change auth status
+        console.log('store --about to setUserToken with ', token)
+        commit('setUserToken', token)
 
-      // Set request headers
-      this.$http.setToken(token, 'Bearer')
-      console.log('store - $http set token to', token)
+        // Set request headers
+        this.$http.setToken(token, 'Bearer')
+        console.log('store - $http set token to', token)
+      }
 
       resolve('Logged in')
     })

@@ -14,7 +14,7 @@ import spec from '~/assets/mlmac-api.json'
 
 export default {
   name: 'ApiPage',
-  // middleware: 'auth',
+
   head() {
     return {
       script: [
