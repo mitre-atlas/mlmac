@@ -15,7 +15,7 @@
       </v-btn> -->
 
       <!-- Buttons once logged in -->
-      <div v-if="isUserAuthenticated">
+      <div v-show="isUserAuthenticated">
         <v-btn
           v-for="link in authLinks"
           :key="link.name"
@@ -55,7 +55,7 @@
           </v-list>
         </v-menu>
       </div>
-      <v-btn v-else color="primary" @click="login">
+      <v-btn v-show="!isUserAuthenticated" color="primary" @click="login">
         <v-icon left> mdi-github </v-icon>
         Login
       </v-btn>
