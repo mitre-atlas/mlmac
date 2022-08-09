@@ -34,9 +34,12 @@ export const getters = {
 
 export const mutations = {
   setUserToken(state, token) {
-    state.userToken = token
-    state.isUserAuthenticated = true
-    console.log('setUserToken to', token)
+    if (typeof token !== 'undefined') {
+      state.userToken = token
+      state.isUserAuthenticated = true
+      console.log('setUserToken to', token)
+    }
+    console.log('undefined setUserToken')
   },
   setStatus(state, status) {
     console.log('setStatus status', status)
@@ -85,6 +88,7 @@ export const actions = {
       }
 
       // Save the token and change auth status
+      console.log('store --about to setUserToken with ', token)
       commit('setUserToken', token)
 
       // Set request headers
