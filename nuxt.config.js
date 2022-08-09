@@ -8,15 +8,20 @@ export default {
   head: {
     title: 'MLMAC',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Welcome to the Machine Learning Model Attribution Challenge, a technical competition designed to spur creative approaches to identifying the true origin of fine-tuned large language models.'
+      },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,7 +38,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -41,7 +46,7 @@ export default {
     '@nuxt/content',
     '@nuxt/http',
     '@nuxtjs/tailwindcss',
-    'cookie-universal-nuxt',
+    'cookie-universal-nuxt'
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -57,17 +62,17 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
-    },
+          success: colors.green.accent3
+        }
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
   http: {
-    proxy: true, // Can be also an object with default options
+    proxy: true // Can be also an object with default options
   },
 
   proxy: {},
@@ -83,11 +88,11 @@ export default {
         position = {
           selector: to.hash,
           offset: { x: 0, y: 70 }, // Accommodate app bar height of 64
-          behavior: 'smooth',
+          behavior: 'smooth'
         }
       }
 
       return position
-    },
-  },
+    }
+  }
 }

@@ -16,6 +16,15 @@ export default {
   async asyncData({ $content }) {
     const data = await $content('text').fetch()
     return { data }
+  },
+  head: {
+    meta: [
+      {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: 'https://mlmac.io'
+      }
+    ]
   }
 }
 </script>
