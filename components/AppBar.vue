@@ -219,7 +219,12 @@ export default Vue.extend({
     this.links[1].items = toc
   },
   computed: {
-    ...mapGetters(['isUserAuthenticated', 'githubInfo', 'totalQueries'])
+    ...mapGetters([
+      'apiKey',
+      'isUserAuthenticated',
+      'githubInfo',
+      'totalQueries'
+    ])
   },
   methods: {
     login() {
