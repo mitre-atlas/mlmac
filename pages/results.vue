@@ -1,13 +1,21 @@
 <template>
-  <LeaderboardSection></LeaderboardSection>
+  <v-container>
+    <SectionHeader id="leaderboard">{{ title }}</SectionHeader>
+
+    <LeaderboardTable></LeaderboardTable>
+
+    <div class="text-caption">{{ lastUpdated }}</div>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: 'ResultsPage',
-  // middleware: 'auth',
   data() {
-    return {}
+    return {
+      title: 'Results',
+      lastUpdated: `Last updated at ${new Date().toLocaleString()}`
+    }
   }
 }
 </script>

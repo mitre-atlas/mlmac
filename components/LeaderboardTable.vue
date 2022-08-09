@@ -5,17 +5,19 @@
     :items="items"
     item-key="name"
     :search="search">
-    <template #top>
+    <!-- <template #top>
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
         label="Search by username"
         single-line
         hide-details></v-text-field>
-    </template>
+    </template> -->
     <template #item.rank="{ item }">
+      -
+      <!--
       {{ item.rank }}
-      <!-- <span v-if="item.rank === 1">
+      <span v-if="item.rank === 1">
         <v-icon right small> mdi-crown </v-icon>
       </span> -->
     </template>
@@ -55,12 +57,12 @@ export default Vue.extend({
           value: 'username'
         },
         {
-          text: 'Score',
+          text: 'Correct model pairs',
           value: 'score',
           filterable: false
         },
         {
-          text: 'Queries',
+          text: 'Total queries',
           value: 'total_queries',
           filterable: false
         },
