@@ -2,6 +2,8 @@ swagger: '2.0'
 info:
   description: |
     Machine Learning Model Attribution Challenge API
+
+    Login on [mlmac.io](https://mlmac.io) with GitHub credentials obtain an API key.
   version: '1.0.0'
   title: 'MLMAC'
   termsOfService: 'https://mlmac.io/terms/'
