@@ -38,7 +38,9 @@ export const mutations = {
     state.isUserAuthenticated = true
   },
   setStatus(state, status) {
-    console.log('setStatus before status', status)
+    console.log('setStatus status', status)
+    console.log('setStatus before state', state)
+
     state.name = status.name
     state.created = new Date(status.created)
     state.total_queries = status.total_queries
