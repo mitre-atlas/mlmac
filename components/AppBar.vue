@@ -67,9 +67,9 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title> {{ githubInfo.username }}</v-list-item-title>
-            <v-list-item-subtitle
+            <!-- <v-list-item-subtitle
               >{{ totalQueries }} total queries</v-list-item-subtitle
-            >
+            > -->
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -182,6 +182,11 @@ export default Vue.extend({
         {
           name: 'Submit Answers',
           route: '/submit',
+          items: []
+        },
+        {
+          name: 'View Query Stats',
+          route: '/status',
           items: []
         }
       ],

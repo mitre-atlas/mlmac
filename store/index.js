@@ -2,14 +2,47 @@ const COOKIE_NAME = 'mlmac-token'
 
 export const state = () => ({
   isUserAuthenticated: false,
-  userToken: '',
-  name: '',
+  // userToken: '',
+  // name: '',
+  // created: '',
+  // total_queries: -1,
+  // queries: {},
+  // githubUsername: '',
+  // githubAvatarUrl: ''
+  userToken: 'ABC123',
+  name: 'HelloWorld',
   created: '',
-  total_queries: -1,
-  queries: -1,
-  githubUsername: '',
-  githubAvatarUrl: '',
+  total_queries: 5678,
+  queries: {
+    0: 9,
+    3: 5,
+    4: 8,
+    6: 1
+  },
+  githubUsername: 'HelloWorld',
+  githubAvatarUrl: 'https://cdn.vuetifyjs.com/images/john.jpg'
 })
+
+export const getters = {
+  isUserAuthenticated(state) {
+    return state.isUserAuthenticated
+  },
+  githubInfo(state) {
+    return {
+      username: state.githubUsername,
+      avatarUrl: state.githubAvatarUrl
+    }
+  },
+  totalQueries(state) {
+    return state.total_queries
+  },
+  queries(state) {
+    return state.queries
+  },
+  apiKey(state) {
+    return state.userToken
+  }
+}
 
 export const mutations = {
   setUserToken(state, token) {
@@ -20,7 +53,8 @@ export const mutations = {
     state.name = status.name
     state.created = new Date(status.created)
     state.total_queries = status.total_queries
-    state.queries = status.queries
+    // state.queries = status.queries
+    state.queries = { ...state.queries, ...status }
   },
   setGitHubInfo(state, info) {
     state.githubUsername = info.login
@@ -31,26 +65,11 @@ export const mutations = {
     state.userToken = ''
     state.name = ''
     state.created = ''
-    state.total_queries = -1
+    state.total_queries = {}
     state.queries = -1
     state.githubUsername = ''
     state.githubAvatarUrl = ''
-  },
-}
-
-export const getters = {
-  isUserAuthenticated(state) {
-    return state.isUserAuthenticated
-  },
-  githubInfo(state) {
-    return {
-      username: state.githubUsername,
-      avatarUrl: state.githubAvatarUrl,
-    }
-  },
-  totalQueries(state) {
-    return state.total_queries
-  },
+  }
 }
 
 export const actions = {
@@ -93,5 +112,5 @@ export const actions = {
     await this.$http.$get('https://api.mlmac.io:8080/logout')
     commit('logout')
     this.$cookies.remove(COOKIE_NAME)
-  },
+  }
 }
