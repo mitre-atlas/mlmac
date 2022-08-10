@@ -146,7 +146,7 @@
         "status": {
           "type": "string",
           "enum": [
-            "error"
+            "failed"
           ],
           "description": "Query status"
         },
@@ -155,7 +155,9 @@
           "properties": {
             "error": {
               "type": "string",
-              "description": "Either the model is loading, or another error description"
+              "enum": [
+                "currently loading"
+              ]
             },
             "estimated_time": {
               "type": "number",

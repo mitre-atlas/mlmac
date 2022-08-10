@@ -113,14 +113,15 @@ definitions:
       status:
         type: 'string'
         enum:
-          - error
+          - failed
         description: Query status
       result:
         type: 'object'
         properties:
           error:
             type: string
-            description: 'Either the model is loading, or another error description'
+            enum:
+              - currently loading
           estimated_time:
             type: number
             description: Estimated time in seconds until the model is ready to be queried
