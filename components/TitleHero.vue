@@ -10,20 +10,35 @@
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
-      <CountdownTimer></CountdownTimer>
+      <v-col>
+        <CountdownTimer></CountdownTimer>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   data() {
     return {
+      e1: 1,
       title: 'Machine Learning Model Attribution Challenge',
       subtitle: ''
+    }
+  },
+  computed: {
+    tickLabels() {
+      const labels = []
+      for (const [key, value] of Object.entries(this.timeline)) {
+        labels.push(`${key} <br> 123`)
+      }
+      return labels
+    },
+    tickValues() {
+      return Object.values(this.timeline)
     }
   }
 })
@@ -44,5 +59,8 @@ export default Vue.extend({
   background-size: cover;
   width: 100%;
   height: 100%;
+}
+.v-stepper {
+  background: rgba(48, 48, 48, 0.9);
 }
 </style>

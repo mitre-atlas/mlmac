@@ -1,17 +1,42 @@
 <template>
   <div class="text-center" align="center" justify="center">
-    <!-- <v-row>
-     Starts at {{ startLocaleString }} and ends on
-      {{ endLocaleString }}
-    </v-row> -->
-    <v-row>
-      <div v-for="c in countdown" :key="c.name" class="text-center">
-        <v-sheet color="rgba(0,0,0,0)" class="mx-5">
-          <div class="text-h4">{{ c.value }}</div>
-          <div class="text-overline">{{ c.name }}</div>
-        </v-sheet>
-      </div>
-    </v-row>
+    <v-stepper alt-labels flat>
+      <v-stepper-header>
+        <v-stepper-step step="1" complete-icon="mdi-play" complete>
+          Challenge start
+          <small class="text-caption">{{
+            new Date('2022-08-12T00:00:00Z').toUTCString().substring(0, 17)
+          }}</small>
+        </v-stepper-step>
+        <v-divider></v-divider>
+
+        <v-stepper-step
+          step="2"
+          complete-icon="mdi-checkbox-marked-outline"
+          complete>
+          Initial results
+          <small class="text-caption">{{
+            new Date('2022-08-26T00:00:00Z').toUTCString().substring(0, 17)
+          }}</small>
+        </v-stepper-step>
+        <v-divider></v-divider>
+
+        <v-stepper-step step="3" complete-icon="mdi-flag-checkered" complete>
+          Challenge finish
+          <small class="text-caption">{{
+            new Date('2022-09-16T00:00:00Z').toUTCString().substring(0, 17)
+          }}</small>
+        </v-stepper-step>
+        <v-divider></v-divider>
+
+        <v-stepper-step step="4" complete-icon="mdi-medal-outline" complete>
+          Final results
+          <small class="text-caption">{{
+            new Date('2022-10-14T00:00:00Z').toUTCString().substring(0, 17)
+          }}</small>
+        </v-stepper-step>
+      </v-stepper-header>
+    </v-stepper>
   </div>
 </template>
 
@@ -20,54 +45,13 @@ import Vue from 'vue'
 
 export default Vue.extend({
   data() {
-    return {
-      options: {
-        dateStyle: 'long',
-        timeStyle: 'long'
-      },
-      start: new Date('2022-08-12T00:00:00Z'),
-      end: new Date('2022-09-16T00:00:00Z'),
-      now: Date.now(),
-      interval: -1
-    }
-  },
-  computed: {
-    diff(): Date {
-      return new Date(this.start.getTime() - this.now)
-    },
-    countdown(): object[] {
-      return [
-        {
-          name: 'days',
-          value: this.diff.getUTCDate()
-        },
-        {
-          name: 'hours',
-          value: this.diff.getUTCHours()
-        },
-        {
-          name: 'minutes',
-          value: this.diff.getUTCMinutes()
-        },
-        {
-          name: 'seconds',
-          value: this.diff.getUTCSeconds()
-        }
-      ]
-    }
-  },
-  mounted() {
-    this.setTimerInterval()
-  },
-  beforeDestroy() {
-    clearInterval(Number(this.interval))
-  },
-  methods: {
-    setTimerInterval() {
-      this.interval = window.setInterval(() => {
-        this.now = Date.now()
-      }, 1000)
-    }
+    return {}
   }
 })
 </script>
+
+<style scoped>
+.v-stepper {
+  background: rgba(48, 48, 48, 0.9);
+}
+</style>
