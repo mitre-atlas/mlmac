@@ -85,7 +85,7 @@
       </div>
       <v-btn v-show="!isUserAuthenticated" color="primary" @click="login">
         <v-icon left> mdi-github </v-icon>
-        Login
+        Register / Login
       </v-btn>
     </v-app-bar>
 
