@@ -14,8 +14,13 @@
         v-for="link in barLinks"
         :key="link.name"
         text
-        nuxt
-        :to="link.route">
+        :nuxt="'route' in link"
+        :to="'route' in link ? link.route : false"
+        :href="'href' in link ? link.href : false"
+        :target="'href' in link ? '_blank' : false">
+        <v-icon v-if="'icon' in link" left>
+          {{ link.icon }}
+        </v-icon>
         {{ link.name }}
       </v-btn>
 
@@ -120,31 +125,44 @@
       <v-divider></v-divider> -->
 
       <v-list nav>
+        <v-subheader> Challenge Info </v-subheader>
         <!-- Default links, including details headers -->
         <div v-for="link in links" :key="link.route">
           <v-list-group
             v-if="'items' in link && link.items.length > 0"
             :value="true">
             <template #activator>
+              <!-- <v-list-item> -->
+              <v-list-item-icon v-if="'icon' in link">
+                <v-icon>
+                  {{ link.icon }}
+                </v-icon>
+              </v-list-item-icon>
               <v-list-item-title>{{ link.name }}</v-list-item-title>
+              <!-- </v-list-item> -->
             </template>
 
-            <v-list nav>
+            <v-list nav dense>
               <v-list-item
                 v-for="(toc, i) in link.items"
                 :key="i"
                 nuxt
                 :to="`/#${toc.id}`">
                 <v-list-item-content>
-                  <v-list-item-title class="ml-5">{{
+                  <v-list-item-subtitle class="ml-10">{{
                     toc.text
-                  }}</v-list-item-title>
+                  }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
           </v-list-group>
 
           <v-list-item v-else nuxt :to="link.route">
+            <v-list-item-icon v-if="'icon' in link">
+              <v-icon>
+                {{ link.icon }}
+              </v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>{{ link.name }}</v-list-item-title>
             </v-list-item-content>
@@ -155,11 +173,20 @@
         <div>
           <v-divider></v-divider>
 
+          <v-subheader> Participant Resources </v-subheader>
+
           <v-list-item
             v-for="link in barLinks"
-            :key="link.route"
-            nuxt
-            :to="link.route">
+            :key="link.icon"
+            :nuxt="'route' in link"
+            :to="'route' in link ? link.route : false"
+            :href="'href' in link ? link.href : false"
+            :target="'href' in link ? '_blank' : false">
+            <v-list-item-icon v-if="'icon' in link">
+              <v-icon>
+                {{ link.icon }}
+              </v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>{{ link.name }}</v-list-item-title>
             </v-list-item-content>
@@ -187,9 +214,15 @@
         <v-divider></v-divider>
         <v-list nav>
           <v-list-item nuxt to="/#organizers">
+            <v-list-item-icon>
+              <v-icon> mdi-account-multiple-outline </v-icon>
+            </v-list-item-icon>
             <v-list-item-title>Organizers</v-list-item-title>
           </v-list-item>
           <v-list-item nuxt to="/terms">
+            <v-list-item-icon>
+              <v-icon> mdi-file-document-outline </v-icon>
+            </v-list-item-icon>
             <v-list-item-title>Terms of Service</v-list-item-title>
           </v-list-item>
           <!-- <v-btn
@@ -204,7 +237,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
@@ -215,11 +248,13 @@ export default Vue.extend({
         {
           name: 'Overview',
           route: '/#overview',
+          icon: 'mdi-earth',
           items: []
         },
         {
-          name: 'Competition Details',
+          name: 'Details',
           route: '/#details',
+          icon: 'mdi-format-list-bulleted',
           items: []
         }
       ],
@@ -227,11 +262,20 @@ export default Vue.extend({
         {
           name: 'API Docs',
           route: '/api',
+          icon: 'mdi-api',
+          items: []
+        },
+        {
+          name: 'Starter Kit',
+          href: 'https://github.com/mitre-atlas/mlmac-starter-kit/blob/main/mlmac_starter_kit.ipynb',
+          icon: 'mdi-language-python',
+
           items: []
         },
         {
           name: 'Results',
           route: '/results',
+          icon: 'mdi-checkbox-marked-outline',
           items: []
         }
       ],
@@ -239,6 +283,7 @@ export default Vue.extend({
         {
           name: 'Submit Answers',
           route: '/submit',
+          icon: 'mdi-send',
           items: []
         }
         // {
@@ -252,7 +297,7 @@ export default Vue.extend({
       dialog: false
     }
   },
-  async fetch(): Promise<any> {
+  async fetch() {
     const { toc } = await this.$content('competition-details')
       .only('toc')
       .fetch()
