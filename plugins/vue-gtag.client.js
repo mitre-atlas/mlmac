@@ -8,10 +8,7 @@ export default function ({ app, $config }) {
       VueGtag,
       {
         config: {
-          id: $config.analytics_id,
-          params: {
-            send_page_view: false
-          }
+          id: $config.analytics_id
         }
       },
       app.router
