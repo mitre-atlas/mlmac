@@ -6,7 +6,7 @@
     style="height: 100vh">
     <v-row align="center" justify="center">
       <v-col class="text-center" cols="12">
-        <div class="text-h1 font-weight-medium mx-10">{{ title }}</div>
+        <div :class="titleStyle">{{ title }}</div>
       </v-col>
     </v-row>
     <!-- <v-row align="center" justify="center">
@@ -37,7 +37,15 @@ export default Vue.extend({
       subtitle: ''
     }
   },
-  computed: {}
+  computed: {
+    titleStyle() {
+      const cls = 'font-weight-medium mx-10'
+      if (this.$vuetify.breakpoint.mobile) {
+        return `text-h2 ${cls}`
+      }
+      return `text-h1 ${cls}`
+    }
+  }
 })
 </script>
 

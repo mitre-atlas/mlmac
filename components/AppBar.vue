@@ -9,20 +9,22 @@
 
       <v-spacer></v-spacer>
 
-      <!-- Default buttons -->
-      <v-btn
-        v-for="link in barLinks"
-        :key="link.name"
-        text
-        :nuxt="'route' in link"
-        :to="'route' in link ? link.route : false"
-        :href="'href' in link ? link.href : false"
-        :target="'href' in link ? '_blank' : false">
-        <v-icon v-if="'icon' in link" left>
-          {{ link.icon }}
-        </v-icon>
-        {{ link.name }}
-      </v-btn>
+      <div v-if="$vuetify.breakpoint.smAndUp">
+        <!-- Default buttons -->
+        <v-btn
+          v-for="link in barLinks"
+          :key="link.name"
+          text
+          :nuxt="'route' in link"
+          :to="'route' in link ? link.route : false"
+          :href="'href' in link ? link.href : false"
+          :target="'href' in link ? '_blank' : false">
+          <v-icon v-if="'icon' in link" left>
+            {{ link.icon }}
+          </v-icon>
+          {{ link.name }}
+        </v-btn>
+      </div>
 
       <!-- Buttons once logged in -->
       <div v-show="isUserAuthenticated">
