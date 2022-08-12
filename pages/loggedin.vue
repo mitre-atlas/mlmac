@@ -11,7 +11,12 @@
         }}</span>
       </div>
       <div class="text-h5 ma-10 text-center">
-        Visit the <nuxt-link to="/api">API docs</nuxt-link>, see your
+        Visit the
+        <a
+          href="https://github.com/mitre-atlas/mlmac-starter-kit/blob/main/mlmac_starter_kit.ipynb"
+          target="_blank"
+          >Starter Jupyter notebook</a
+        >, <nuxt-link to="/api">API docs</nuxt-link>, see your
         <nuxt-link to="/status">query stats</nuxt-link>, and questions can be
         posted to <a href="https://mitreatlas.slack.com">Slack</a>.
       </div>
