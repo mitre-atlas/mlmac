@@ -26,7 +26,11 @@
 
       <!-- Buttons once logged in -->
       <div v-show="isUserAuthenticated">
-        <v-btn
+        <v-btn nuxt to="/submit">
+          <v-icon left> mdi-send </v-icon>
+          Submit Answers
+        </v-btn>
+        <!-- <v-btn
           v-for="link in authLinks"
           :key="link.name"
           :nuxt="'route' in link"
@@ -37,7 +41,7 @@
             {{ link.icon }}
           </v-icon>
           {{ link.name }}
-        </v-btn>
+        </v-btn> -->
 
         <!-- Help dialog -->
         <v-dialog v-model="dialog" width="500">
@@ -78,6 +82,9 @@
 
           <v-list>
             <v-list-item nuxt to="/status">
+              <v-list-item-icon>
+                <v-icon>mdi-chart-box-outline</v-icon>
+              </v-list-item-icon>
               <v-list-item-title>
                 {{ githubInfo.username }}'s stats
               </v-list-item-title>
@@ -87,6 +94,9 @@
             </v-list-item> -->
             <v-divider></v-divider>
             <v-list-item nuxt to="/" @click="$store.dispatch('logout')">
+              <v-list-item-icon>
+                <v-icon>mdi-logout</v-icon>
+              </v-list-item-icon>
               <v-list-item-title> Logout</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -195,6 +205,16 @@
               <v-list-item-title>{{ link.name }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
+          <v-list-item
+            href="https://join.slack.com/t/mitreatlas/shared_invite/zt-1c84p6wkh-ghNhhnPIFML8e33LcSA18g">
+            <v-list-item-icon>
+              <v-icon>mdi-slack</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>#mlmac on Slack</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </div>
 
         <!-- Links after login, also in bar menu -->
@@ -223,7 +243,7 @@
       </v-list>
 
       <!-- Footer of nav -->
-      <template #append>
+      <!-- <template #append>
         <v-divider></v-divider>
         <v-list nav>
           <v-list-item nuxt to="/#organizers">
@@ -238,14 +258,8 @@
             </v-list-item-icon>
             <v-list-item-title>Terms of Service</v-list-item-title>
           </v-list-item>
-          <!-- <v-btn
-            v-show="isUserAuthenticated"
-            block
-            @click="$store.dispatch('logout')">
-            Logout
-          </v-btn> -->
         </v-list>
-      </template>
+      </template> -->
     </v-navigation-drawer>
   </div>
 </template>
@@ -270,6 +284,35 @@ export default Vue.extend({
           icon: 'mdi-format-list-bulleted',
           items: []
         },
+
+        {
+          name: 'Organizers',
+          route: '/#organizers',
+          icon: 'mdi-account-multiple-outline',
+          items: []
+        },
+        {
+          name: 'Terms of Service',
+          route: '/terms',
+          icon: 'mdi-file-document-outline',
+          items: []
+        }
+      ],
+      barLinks: [
+        {
+          name: 'Starter Kit',
+          href: 'https://github.com/mitre-atlas/mlmac-starter-kit/blob/main/mlmac_starter_kit.ipynb',
+          icon: 'mdi-language-python',
+
+          items: []
+        },
+        {
+          name: 'API Docs',
+          route: '/api',
+          icon: 'mdi-api',
+          items: []
+        },
+
         {
           name: 'Results',
           route: '/results',
@@ -277,33 +320,19 @@ export default Vue.extend({
           items: []
         }
       ],
-      barLinks: [
+      authLinks: [
         {
-          name: 'API Docs',
-          route: '/api',
-          icon: 'mdi-api',
+          name: 'View Query Stats',
+          route: '/status',
+          icon: 'mdi-chart-box-outline',
           items: []
         },
-        {
-          name: 'Starter Kit',
-          href: 'https://github.com/mitre-atlas/mlmac-starter-kit/blob/main/mlmac_starter_kit.ipynb',
-          icon: 'mdi-language-python',
-
-          items: []
-        }
-      ],
-      authLinks: [
         {
           name: 'Submit Answers',
           route: '/submit',
           icon: 'mdi-send',
           items: []
         }
-        // {
-        //   name: 'View Query Stats',
-        //   route: '/status',
-        //   items: []
-        // }
       ],
       drawer: false,
       details: {},
