@@ -1,6 +1,6 @@
 <template>
   <div class="text-center" align="center" justify="center">
-    <v-stepper alt-labels flat>
+    <v-stepper v-show="$vuetify.breakpoint.mdAndUp" alt-labels flat>
       <v-stepper-header>
         <v-stepper-step step="1" complete-icon="mdi-play" complete>
           Challenge start
@@ -37,6 +37,7 @@
         </v-stepper-step>
       </v-stepper-header>
     </v-stepper>
+    <TimelineSteps v-show="$vuetify.breakpoint.smAndDown"></TimelineSteps>
   </div>
 </template>
 

@@ -9,16 +9,16 @@
 
       <v-spacer></v-spacer>
 
-      <div v-if="$vuetify.breakpoint.smAndUp">
+      <div v-show="$vuetify.breakpoint.mdAndUp">
         <!-- Default buttons -->
         <v-btn
           v-for="link in barLinks"
           :key="link.name"
           text
           :nuxt="'route' in link"
-          :to="'route' in link ? link.route : undefined"
-          :href="'href' in link ? link.href : undefined"
-          :target="'href' in link ? '_blank' : undefined">
+          :to="'route' in link ? link.route : false"
+          :href="'href' in link ? link.href : false"
+          :target="'href' in link ? '_blank' : false">
           <v-icon v-if="'icon' in link" left>
             {{ link.icon }}
           </v-icon>
@@ -146,7 +146,7 @@
         <div v-for="link in links" :key="link.route">
           <v-list-group
             v-if="'items' in link && link.items.length > 0"
-            :value="true">
+            :value="!$vuetify.breakpoint.mobile">
             <template #activator>
               <!-- <v-list-item> -->
               <v-list-item-icon v-if="'icon' in link">
@@ -195,9 +195,9 @@
             v-for="link in barLinks"
             :key="link.icon"
             :nuxt="'route' in link"
-            :to="'route' in link ? link.route : undefined"
-            :href="'href' in link ? link.href : undefined"
-            :target="'href' in link ? '_blank' : undefined">
+            :to="'route' in link ? link.route : false"
+            :href="'href' in link ? link.href : false"
+            :target="'href' in link ? '_blank' : false">
             <v-list-item-icon v-if="'icon' in link">
               <v-icon>
                 {{ link.icon }}
