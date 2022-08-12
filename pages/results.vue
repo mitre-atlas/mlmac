@@ -2,6 +2,8 @@
   <v-container>
     <SectionHeader id="leaderboard">{{ title }}</SectionHeader>
 
+    <div class="mb-10">Initial baseline results from the MLMAC team.</div>
+
     <LeaderboardTable></LeaderboardTable>
 
     <div class="text-caption">{{ lastUpdated }}</div>
