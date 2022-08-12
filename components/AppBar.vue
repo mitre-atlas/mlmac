@@ -29,9 +29,13 @@
         <v-btn
           v-for="link in authLinks"
           :key="link.name"
-          text
-          nuxt
-          :to="link.route">
+          :nuxt="'route' in link"
+          :to="'route' in link ? link.route : false"
+          :href="'href' in link ? link.href : false"
+          :target="'href' in link ? '_blank' : false">
+          <v-icon v-if="'icon' in link" left>
+            {{ link.icon }}
+          </v-icon>
           {{ link.name }}
         </v-btn>
 
@@ -173,7 +177,7 @@
         <div>
           <v-divider></v-divider>
 
-          <v-subheader> Participant Resources </v-subheader>
+          <v-subheader> Resources </v-subheader>
 
           <v-list-item
             v-for="link in barLinks"
@@ -197,11 +201,20 @@
         <div v-show="isUserAuthenticated">
           <v-divider></v-divider>
 
+          <v-subheader> Actions </v-subheader>
+
           <v-list-item
             v-for="link in authLinks"
             :key="link.route"
-            nuxt
-            :to="link.route">
+            :nuxt="'route' in link"
+            :to="'route' in link ? link.route : false"
+            :href="'href' in link ? link.href : false"
+            :target="'href' in link ? '_blank' : false">
+            <v-list-item-icon v-if="'icon' in link">
+              <v-icon>
+                {{ link.icon }}
+              </v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>{{ link.name }}</v-list-item-title>
             </v-list-item-content>
@@ -256,6 +269,12 @@ export default Vue.extend({
           route: '/#details',
           icon: 'mdi-format-list-bulleted',
           items: []
+        },
+        {
+          name: 'Results',
+          route: '/results',
+          icon: 'mdi-checkbox-marked-outline',
+          items: []
         }
       ],
       barLinks: [
@@ -270,12 +289,6 @@ export default Vue.extend({
           href: 'https://github.com/mitre-atlas/mlmac-starter-kit/blob/main/mlmac_starter_kit.ipynb',
           icon: 'mdi-language-python',
 
-          items: []
-        },
-        {
-          name: 'Results',
-          route: '/results',
-          icon: 'mdi-checkbox-marked-outline',
           items: []
         }
       ],
