@@ -16,9 +16,9 @@
           :key="link.name"
           text
           :nuxt="'route' in link"
-          :to="'route' in link ? link.route : false"
-          :href="'href' in link ? link.href : false"
-          :target="'href' in link ? '_blank' : false">
+          :to="'route' in link ? link.route : undefined"
+          :href="'href' in link ? link.href : undefined"
+          :target="'href' in link ? '_blank' : undefined">
           <v-icon v-if="'icon' in link" left>
             {{ link.icon }}
           </v-icon>
@@ -195,9 +195,9 @@
             v-for="link in barLinks"
             :key="link.icon"
             :nuxt="'route' in link"
-            :to="'route' in link ? link.route : false"
-            :href="'href' in link ? link.href : false"
-            :target="'href' in link ? '_blank' : false">
+            :to="'route' in link ? link.route : undefined"
+            :href="'href' in link ? link.href : undefined"
+            :target="'href' in link ? '_blank' : undefined">
             <v-list-item-icon v-if="'icon' in link">
               <v-icon>
                 {{ link.icon }}
@@ -229,9 +229,9 @@
             v-for="link in authLinks"
             :key="link.route"
             :nuxt="'route' in link"
-            :to="'route' in link ? link.route : false"
-            :href="'href' in link ? link.href : false"
-            :target="'href' in link ? '_blank' : false">
+            :to="'route' in link ? link.route : undefined"
+            :href="'href' in link ? link.href : undefined"
+            :target="'href' in link ? '_blank' : undefined">
             <v-list-item-icon v-if="'icon' in link">
               <v-icon>
                 {{ link.icon }}
