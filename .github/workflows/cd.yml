@@ -29,6 +29,12 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Configure .env
+        shell: bash
+        env:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+        run: echo -e "ANALYTICS_ID=$GOOGLE_ANALYTICS_ID" > .env
+
       - name: Generate
         run: yarn generate
 
