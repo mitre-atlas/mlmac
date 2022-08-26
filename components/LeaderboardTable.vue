@@ -13,13 +13,29 @@
         single-line
         hide-details></v-text-field>
     </template> -->
-    <template #item.rank="{ item }">
-      -
-      <!--
-      {{ item.rank }}
-      <span v-if="item.rank === 1">
-        <v-icon right small> mdi-crown </v-icon>
-      </span> -->
+    <template #header.total_queries="{ header }">
+      {{ header.text }}
+      <v-tooltip top>
+        <template #activator="{ on, attrs }">
+          <v-icon right small v-bind="attrs" v-on="on">
+            mdi-information-outline
+          </v-icon>
+        </template>
+        <span>Only includes queries made via the mlmac.io API</span>
+      </v-tooltip>
+    </template>
+    <template #item.username="{ item }">
+      <div v-if="item.username == 'MLMAC Team Baseline'">
+        {{ item.username }}
+      </div>
+      <a v-else :href="`https://github.com/${item.username}`" target="_blank">
+        {{ item.username }}
+      </a>
+    </template>
+    <template #item.is_student="{ item }">
+      <span v-if="item.is_student">
+        <v-icon right small> mdi-school </v-icon>
+      </span>
     </template>
     <template #item.last_submission_date="{ item }">
       <!-- {{
@@ -70,12 +86,12 @@ export default Vue.extend({
           text: 'Last submission time',
           value: 'last_submission_date',
           filterable: false
+        },
+        {
+          text: 'Student submission',
+          value: 'is_student',
+          filterable: false
         }
-        // {
-        //   text: 'Show queries',
-        //   value: 'data-table-expand',
-        //   filterable: false
-        // }
       ],
       numModels: 12,
       end: Date.now(),

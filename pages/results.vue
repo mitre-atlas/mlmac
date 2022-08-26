@@ -2,8 +2,6 @@
   <v-container>
     <SectionHeader id="leaderboard">{{ title }}</SectionHeader>
 
-    <div class="mb-10">Initial baseline results from the MLMAC team.</div>
-
     <LeaderboardTable></LeaderboardTable>
 
     <div class="text-caption">{{ lastUpdated }}</div>
@@ -17,7 +15,7 @@ export default {
     return {
       title: 'Results',
       lastUpdated: `Last updated at ${new Date(
-        '2022-08-12T00:00:00Z'
+        '2022-08-26T17:30:00Z'
       ).toLocaleString()}`
     }
   }
