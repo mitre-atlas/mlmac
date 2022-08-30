@@ -22,31 +22,10 @@
   },
   {
     "is_student": false,
-    "last_submission_date": "2022-08-26T14:55:29Z",
-    "num_correct": 0,
-    "total_queries": 0,
-    "username": "TS-Lee"
-  },
-  {
-    "is_student": false,
-    "last_submission_date": "2022-08-26T15:33:12Z",
-    "num_correct": 3,
-    "total_queries": 0,
-    "username": "GabrielePicco"
-  },
-  {
-    "is_student": false,
     "last_submission_date": "2022-08-26T15:50:23Z",
     "num_correct": 3,
-    "total_queries": 1725,
+    "total_queries": 1734,
     "username": "ambrishrawat"
-  },
-  {
-    "is_student": false,
-    "last_submission_date": "2022-08-26T15:51:53Z",
-    "num_correct": 1,
-    "total_queries": 11,
-    "username": "yufanghou"
   },
   {
     "is_student": false,

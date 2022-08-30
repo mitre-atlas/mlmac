@@ -15,7 +15,7 @@ export default {
     return {
       title: 'Results',
       lastUpdated: `Last updated at ${new Date(
-        '2022-08-26T17:30:00Z'
+        '2022-08-30T15:00:00Z'
       ).toLocaleString()}`
     }
   }
