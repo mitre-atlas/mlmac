@@ -4,6 +4,7 @@
     fill-height
     class="custom-img-container"
     style="height: 100vh">
+
     <v-row align="center" justify="center">
       <v-col class="text-center" cols="12">
         <div :class="titleStyle">{{ title }}</div>
@@ -21,7 +22,10 @@
     </v-row> -->
     <v-row align="center" justify="center">
       <v-col>
-        <CountdownTimer></CountdownTimer>
+        <!-- <CountdownTimer></CountdownTimer> -->
+        <div class="text-center text-h5">
+        Round 2 coming soon!
+        </div>
       </v-col>
     </v-row>
   </v-container>

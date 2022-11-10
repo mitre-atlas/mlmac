@@ -1,5 +1,12 @@
 <template>
   <div>
+            <v-alert
+  dismissible
+  prominent
+  type="info"
+>
+Round 2 details coming soon!
+</v-alert>
     <TitleHero></TitleHero>
     <Overview></Overview>
     <CompetitionDetails></CompetitionDetails>
