@@ -1,10 +1,10 @@
 swagger: '2.0'
 info:
   description: |
-    Machine Learning Model Attribution Challenge API
+    Machine Learning Model Attribution Challenge API for Round 2
 
     Login on [mlmac.io](https://mlmac.io) with GitHub credentials obtain an API key.
-  version: '1.0.0'
+  version: '1.1.0'
   title: 'MLMAC'
   termsOfService: 'https://mlmac.io/terms/'
   license:
@@ -31,11 +31,11 @@ paths:
       parameters:
         - name: 'model'
           in: 'query'
-          description: 'Model identifier from 0 to 11'
+          description: 'Model identifier from 0 to 23'
           required: true
           type: 'integer'
           minimum: 0
-          maximum: 11
+          maximum: 23
 
         - in: 'body'
           name: 'body'

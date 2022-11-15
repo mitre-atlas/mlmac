@@ -22,10 +22,10 @@
     </v-row> -->
     <v-row align="center" justify="center">
       <v-col>
-        <!-- <CountdownTimer></CountdownTimer> -->
-        <div class="text-center text-h5">
+        <CountdownTimer></CountdownTimer>
+        <!-- <div class="text-center text-h5">
         Round 2 coming soon!
-        </div>
+        </div> -->
       </v-col>
     </v-row>
   </v-container>

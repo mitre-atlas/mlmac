@@ -3,29 +3,29 @@
     <v-timeline-item icon="mdi-play" small right fill-dot>
       <template #opposite> Challenge start </template>
       <span class="text-caption">{{
-        new Date('2022-08-12T00:00:00Z').toUTCString().substring(0, 17)
+        new Date('2022-11-18T00:00:00Z').toUTCString().substring(0, 17)
       }}</span>
     </v-timeline-item>
 
-    <v-timeline-item icon="mdi-checkbox-marked-outline" small right fill-dot>
+    <!-- <v-timeline-item icon="mdi-checkbox-marked-outline" small right fill-dot>
       <template #opposite> Initial results </template>
 
       <span class="text-caption">{{
         new Date('2022-08-26T00:00:00Z').toUTCString().substring(0, 17)
       }}</span>
-    </v-timeline-item>
+    </v-timeline-item> -->
 
     <v-timeline-item icon="mdi-flag-checkered" small right fill-dot>
       <template #opposite> Challenge finish </template>
       <span class="text-caption">{{
-        new Date('2022-09-16T00:00:00Z').toUTCString().substring(0, 17)
+        new Date('2022-12-16T00:00:00Z').toUTCString().substring(0, 17)
       }}</span>
     </v-timeline-item>
 
     <v-timeline-item icon="mdi-medal-outline" small right fill-dot>
       <template #opposite> Final results </template>
       <span class="text-caption">{{
-        new Date('2022-10-14T00:00:00Z').toUTCString().substring(0, 17)
+        new Date('2022-12-23T00:00:00Z').toUTCString().substring(0, 17)
       }}</span>
     </v-timeline-item>
   </v-timeline>

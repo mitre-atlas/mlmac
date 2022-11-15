@@ -1,0 +1,100 @@
+[
+  {
+    "username": "Saifulislamsalim79",
+    "total_queries": 2,
+    "last_submission_date": "2022-08-17T21:58:27Z",
+    "num_correct": 0,
+    "is_student": true
+  },
+  {
+    "username": "Jordine",
+    "total_queries": 244,
+    "last_submission_date": "2022-08-23T03:47:08Z",
+    "num_correct": 6,
+    "is_student": true
+  },
+  {
+    "username": "ambrishrawat",
+    "total_queries": 1725,
+    "last_submission_date": "2022-08-26T15:50:23Z",
+    "num_correct": 3,
+    "is_student": false
+  },
+  {
+    "username": "curranjanssens",
+    "total_queries": 516,
+    "last_submission_date": "2022-08-30T19:48:47Z",
+    "num_correct": 4,
+    "is_student": true
+  },
+  {
+    "username": "YoulongDing",
+    "total_queries": 168,
+    "last_submission_date": "2022-09-01T16:04:22Z",
+    "num_correct": 6,
+    "is_student": true
+  },
+  {
+    "username": "sheetal57",
+    "total_queries": 604,
+    "last_submission_date": "2022-09-07T16:42:03Z",
+    "num_correct": 5,
+    "is_student": false
+  },
+  {
+    "username": "ri638",
+    "total_queries": 0,
+    "last_submission_date": "2022-09-04T11:56:40Z",
+    "num_correct": 1,
+    "is_student": true
+  },
+  {
+    "username": "JosephTLucas",
+    "total_queries": 843,
+    "last_submission_date": "2022-09-14T15:44:26Z",
+    "num_correct": 3,
+    "is_student": false
+  },
+  {
+    "username": "FarhanDhanani",
+    "total_queries": 1084,
+    "last_submission_date": "2022-09-16T10:38:58Z",
+    "num_correct": 6,
+    "is_student": true
+  },
+  {
+    "username": "oleszko",
+    "total_queries": 11,
+    "last_submission_date": "2022-09-16T13:26:19Z",
+    "num_correct": 2,
+    "is_student": false
+  },
+  {
+    "username": "ogozuacik",
+    "total_queries": 13825,
+    "last_submission_date": "2022-09-16T21:36:33Z",
+    "num_correct": 4,
+    "is_student": false
+  },
+  {
+    "username": "nick-jia",
+    "total_queries": 12,
+    "last_submission_date": "2022-09-17T09:24:46Z",
+    "num_correct": 3,
+    "is_student": true
+  },
+  {
+    "username": "Pranjal2041",
+    "total_queries": 1212,
+    "last_submission_date": "2022-09-17T10:41:50Z",
+    "num_correct": 7,
+    "is_student": true
+  },
+  {
+    "username": "MLMAC Team Baseline",
+    "total_queries": 500000,
+    "last_submission_date": "2022-08-12T00:00:00Z",
+    "num_correct": 6,
+    "is_student": true
+  }
+]

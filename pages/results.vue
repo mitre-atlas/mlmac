@@ -2,9 +2,19 @@
   <v-container>
     <SectionHeader id="leaderboard">{{ title }}</SectionHeader>
 
-    <LeaderboardTable></LeaderboardTable>
+    <!-- <LeaderboardTable></LeaderboardTable> -->
+    <!-- <div class="text-caption">{{ lastUpdated }}</div> -->
 
-    <div class="text-caption">{{ lastUpdated }}</div>
+        <div class="text-center">
+      Competition is ongoing - see the
+      <a
+        href="https://www.kaggle.com/competitions/ml-model-attribution-2/leaderboard"
+        target="_blank"
+        >
+        current Kaggle Leaderboard
+      </a>
+    </div>
+
   </v-container>
 </template>
 

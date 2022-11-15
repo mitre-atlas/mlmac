@@ -12,7 +12,7 @@
       <div v-show="$vuetify.breakpoint.mdAndUp">
         <!-- Default buttons -->
         <v-btn
-          v-for="link in barLinks"
+          v-for="link in importantBarLinks"
           :key="link.name"
           text
           :nuxt="'route' in link"
@@ -28,10 +28,7 @@
 
       <!-- Buttons once logged in -->
       <div v-show="isUserAuthenticated">
-        <v-btn nuxt to="/submit">
-          <v-icon left> mdi-send </v-icon>
-          Submit Answers
-        </v-btn>
+
         <!-- <v-btn
           v-for="link in authLinks"
           :key="link.name"
@@ -302,6 +299,11 @@ export default Vue.extend({
       ],
       barLinks: [
         {
+          name: 'MLMAC on Kaggle',
+          href: 'https://www.kaggle.com/competitions/ml-model-attribution-2',
+          icon: 'mdi-open-in-new'
+        },
+        {
           name: 'Starter Kit',
           href: 'https://github.com/mitre-atlas/mlmac-starter-kit/blob/main/mlmac_starter_kit.ipynb',
           icon: 'mdi-language-python',
@@ -354,7 +356,11 @@ export default Vue.extend({
       'isUserAuthenticated',
       'githubInfo',
       'totalQueries'
-    ])
+    ]),
+    importantBarLinks () {
+      // Just the first, Kaggle
+      return [this.barLinks[0]]
+    }
   },
   methods: {
     login() {

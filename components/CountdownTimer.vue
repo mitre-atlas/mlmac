@@ -5,12 +5,12 @@
         <v-stepper-step step="1" complete-icon="mdi-play" complete>
           Challenge start
           <small class="text-caption">{{
-            new Date('2022-08-12T00:00:00Z').toUTCString().substring(0, 17)
+            new Date('2022-11-18T00:00:00Z').toUTCString().substring(0, 17)
           }}</small>
         </v-stepper-step>
         <v-divider></v-divider>
 
-        <v-stepper-step
+        <!-- <v-stepper-step
           step="2"
           complete-icon="mdi-checkbox-marked-outline"
           complete>
@@ -19,20 +19,20 @@
             new Date('2022-08-26T00:00:00Z').toUTCString().substring(0, 17)
           }}</small>
         </v-stepper-step>
-        <v-divider></v-divider>
+        <v-divider></v-divider> -->
 
-        <v-stepper-step step="3" complete-icon="mdi-flag-checkered" complete>
+        <v-stepper-step step="2" complete-icon="mdi-flag-checkered" complete>
           Challenge finish
           <small class="text-caption">{{
-            new Date('2022-09-16T00:00:00Z').toUTCString().substring(0, 17)
+            new Date('2022-12-16T00:00:00Z').toUTCString().substring(0, 17)
           }}</small>
         </v-stepper-step>
         <v-divider></v-divider>
 
-        <v-stepper-step step="4" complete-icon="mdi-medal-outline" complete>
+        <v-stepper-step step="3" complete-icon="mdi-medal-outline" complete>
           Final results
           <small class="text-caption">{{
-            new Date('2022-10-14T00:00:00Z').toUTCString().substring(0, 17)
+            new Date('2022-12-23T00:00:00Z').toUTCString().substring(0, 17)
           }}</small>
         </v-stepper-step>
       </v-stepper-header>

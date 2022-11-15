@@ -5,7 +5,8 @@
   prominent
   type="info"
 >
-Round 2 details coming soon!
+Round 2 begins on November 18!  See the <a class="grey--text text--lighten-3 font-weight-bold text-decoration-underline" href="https://www.kaggle.com/competitions/ml-model-attribution-2" target="_blank">Kaggle competition</a> for more details.
+
 </v-alert>
     <TitleHero></TitleHero>
     <Overview></Overview>
@@ -20,10 +21,6 @@ Round 2 details coming soon!
 <script>
 export default {
   name: 'IndexPage',
-  async asyncData({ $content }) {
-    const data = await $content('text').fetch()
-    return { data }
-  },
   head: {
     meta: [
       {
