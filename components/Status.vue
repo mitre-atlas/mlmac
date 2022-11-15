@@ -63,7 +63,7 @@ export default {
   name: 'Status',
   data() {
     return {
-      numModels: 12,
+      numModels: 24,
       show: false,
       lastUpdatedDate: new Date().toLocaleString()
     }
