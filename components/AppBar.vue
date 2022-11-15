@@ -331,12 +331,12 @@ export default Vue.extend({
           icon: 'mdi-chart-box-outline',
           items: []
         },
-        {
-          name: 'Submit Answers',
-          route: '/submit',
-          icon: 'mdi-send',
-          items: []
-        }
+        // {
+        //   name: 'Submit Answers',
+        //   route: '/submit',
+        //   icon: 'mdi-send',
+        //   items: []
+        // }
       ],
       drawer: false,
       details: {},
