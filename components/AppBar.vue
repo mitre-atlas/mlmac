@@ -14,7 +14,7 @@
         <v-btn
           v-for="link in importantBarLinks"
           :key="link.name"
-          text
+          color="primary"
           :nuxt="'route' in link"
           :to="'route' in link ? link.route : false"
           :href="'href' in link ? link.href : false"
@@ -101,10 +101,10 @@
           </v-list>
         </v-menu>
       </div>
-      <v-btn v-show="!isUserAuthenticated" color="primary" @click="login">
+      <!-- <v-btn v-show="!isUserAuthenticated" color="primary" @click="login">
         <v-icon left> mdi-github </v-icon>
         Register / Login
-      </v-btn>
+      </v-btn> -->
     </v-app-bar>
 
     <!-- Side navigation drawer -->
@@ -299,9 +299,9 @@ export default Vue.extend({
       ],
       barLinks: [
         {
-          name: 'MLMAC on Kaggle',
-          href: 'https://www.kaggle.com/competitions/ml-model-attribution-2',
-          icon: 'mdi-open-in-new'
+          name: 'MLMAC Findings',
+          href: '/mlmac_satml.pdf',
+          icon: 'mdi-file-document-outline'
         },
         {
           name: 'Starter Kit',

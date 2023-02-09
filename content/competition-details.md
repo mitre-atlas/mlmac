@@ -2,11 +2,13 @@
 title: Competition Details
 ---
 
-The official rules and terms of services can be read [here](/terms).
+## Summary
 
-## Schedule
+|  Round | Date  | Launch Venue | Official Results |
+|:-:|---|---|:-:|
+|  1 | Aug 12 - Sep 16, 2022  | [DEFCON 30's AI Village](https://aivillage.org/defcon%2030/defcon30-friday/#ml-security-evasion-competition-launch)  |  <a href="/mlmac_satml.pdf" target="_blank">Paper</a> |
+|  2 |  Nov 18 - Dec 16, 2022 | [15th ACM Workshop for Artificial Intelligence and Security](https://aisec.cc/)  |  -  |
 
-The competition will begin November 18, 2022, anywhere on Earth (AoE), and conclude four weeks later on December 16, 2022, AoE. The competition will be announced at the [15th ACM Workshop for Artificial Intelligence and Security](https://aisec.cc/).
 
 ## Threat Model
 
@@ -18,6 +20,10 @@ Participants are tasked with attributing fine-tuned models to a set of base mode
 
 ## Participating
 
+> The official competition has ended, but the organizers encourage continued research in this area.
+
+>  The following sections contain historic details for Round 2.
+
 **Requirements**. Contestants must register for the competition at [Kaggle](https://www.kaggle.com/competitions/ml-model-attribution-2) and at [mlmac.io](https://mlmac.io) with a valid GitHub account and agree to [terms of service](/terms) outlining the rules, judging criteria, and legal elements about indemnity and awards disbursement. Contestants may consist of a team, but the team may only participate through a single account. Cooperation or collusion between accounts will disqualify contestants.
 
 **Getting started**. Upon registration, each contestant will be provided with a list of candidate base models, a competition API key, and example code for interacting with the [mlmac.io](http://mlmac.io) inference API that serves the fine-tuned models.
@@ -26,11 +32,11 @@ Participants are tasked with attributing fine-tuned models to a set of base mode
 
 **Interacting with the fine-tuned models**. The competition API key is used to interact with anonymous fine-tuned models via [mlmac.io](http://mlmac.io). A contestant submits a prompt to the query endpoint and receives the generated text as a response. Fine-tuned models are referred to by a single integer between 0 and 23. For example, to query model 0, one issues a `POST https://api.mlmac.io:8080/query?model=0`. Details and example code are provided to contestants upon registration. The service counts the model queries for each user.
 
-## Submission
+### Submission
 
 Participants can submit their solutions at [Kaggle](https://www.kaggle.com/competitions/ml-model-attribution-2). Participants may submit their solutions and revise their submissions as many times as they like. Only the final submission from each participant will be scored for prize consideration. Participants do not receive feedback on their solution upon submission.
 
-## Evaluation Criteria
+### Evaluation Criteria
 
 Solutions submitted to [Kaggle](https://www.kaggle.com/competitions/ml-model-attribution-2) will be evaluated by the following rank-ordered criteria:
 
@@ -40,6 +46,6 @@ Solutions submitted to [Kaggle](https://www.kaggle.com/competitions/ml-model-att
 
 (3) **Earliest submission time**: any subsequent tie will be broken by selecting the contestant whose final submission was earliest.
 
-## Prizes
+### Prizes
 
 According to Kaggle’s Community Competition rules, no prizes will be awarded for this competition.
